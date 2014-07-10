@@ -22,7 +22,8 @@ localfolders = ~/Mail/leon@leon.nu
 type = IMAP
 remotehost = imap.gmail.com
 remoteuser = leon@leon.nu
-remotepass = SECRET_PASSWORD
+# The file to store IMAP password
+remotepassfile = ~/.oimap
 ssl = yes
 realdelete = no
 maxconnections = 3
