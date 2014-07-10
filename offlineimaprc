@@ -21,9 +21,6 @@ localfolders = ~/Mail/leon@leon.nu
 # Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
 type = IMAP
 remotehost = imap.gmail.com
-remoteuser = leon@leon.nu
-# The file to store IMAP password
-remotepassfile = ~/.oimap
 ssl = yes
 realdelete = no
 maxconnections = 3
