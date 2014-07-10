@@ -21,6 +21,7 @@ localfolders = ~/Mail/leon@leon.nu
 # Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
 type = IMAP
 remotehost = imap.gmail.com
+remoteuser = leon@leon.nu
 ssl = yes
 realdelete = no
 maxconnections = 3
