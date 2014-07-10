@@ -1,0 +1,28 @@
+[general]
+#List of accounts to be synced, separated by a comma.
+accounts = leon@leon.nu
+
+[Account leon@leon.nu]
+# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+localrepository = leon@leon.nu-local
+# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+remoterepository = leon@leon.nu-remote
+# Status cache. Default is plain, which eventually becomes huge and slow.
+status_backend = sqlite
+
+[Repository leon@leon.nu-local]
+# Currently, offlineimap only supports maildir and IMAP for local repositories.
+type = Maildir
+# Where should the mail be placed?
+localfolders = ~/Mail/leon@leon.nu
+
+[Repository leon@leon.nu-remote]
+# Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+type = IMAP
+remotehost = imap.gmail.com
+remoteuser = leon@leon.nu
+remotepass = SECRET_PASSWORD
+ssl = yes
+realdelete = no
+maxconnections = 3
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
