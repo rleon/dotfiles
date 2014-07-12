@@ -1,0 +1,11 @@
+set sort     = threads
+set sort_aux = reverse-last-date-received
+set sort_re
+ 
+set pager_index_lines = 8
+set pager_context     = 5
+set pager_stop
+set menu_scroll
+set smart_wrap
+set tilde
+unset markers

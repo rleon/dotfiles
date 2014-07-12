@@ -1,0 +1,8 @@
+set mbox_type   = Maildir
+set folder      = $HOME/Mail/leon@leon.nu
+set spoolfile   = "+INBOX"
+set mbox        = "+[Gmail]/All Mail"
+set postponed   = "+[Gmail]/Drafts"
+
+mailboxes "=INBOX"
+mailboxes "=ml-kernel-lkml"

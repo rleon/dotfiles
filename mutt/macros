@@ -1,0 +1,7 @@
+macro index D \
+     "<save-message>+[Gmail]/Trash<enter>" \
+     "move message to the trash"
+     
+macro index S \
+     "<save-message>+[Gmail]/Spam<enter>" \
+     "mark message as spam"
