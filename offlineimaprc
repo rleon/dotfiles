@@ -1,7 +1,7 @@
 [general]
 #List of accounts to be synced, separated by a comma.
 accounts = leon@leon.nu
-ui = ttyui
+ui = blinkenlights
 
 [Account leon@leon.nu]
 # Identifier for the local repository; e.g. the maildir to be synced via IMAP.
