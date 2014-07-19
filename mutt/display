@@ -9,3 +9,11 @@ set menu_scroll
 set smart_wrap
 set tilde
 unset markers
+
+# threads containing new messages
+uncolor index "~(~N)"
+    color index brightblue default "~(~N)"
+
+# new messages themselves
+uncolor index "~N"
+    color index brightyellow default "~N"
