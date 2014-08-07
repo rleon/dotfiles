@@ -69,8 +69,18 @@ au BufWinEnter * silent loadview
 " Always show at least 3 lines below the cusrsor
 :set scrolloff=3
 
+" Set indentation settings for python scripts
+" works badly with Makefiles
 set tabstop=4
 set expandtab
 set softtabstop=4
 set shiftwidth=4
 set textwidth=80
+
+" Look for the ctags anywhere in the source code
+set tags=./tags;/
+
+" Ctrl+\ Open the definition in a new tab
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" Alt+] Open the definition in a vertical split
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
