@@ -69,13 +69,11 @@ au BufWinEnter * silent loadview
 " Always show at least 3 lines below the cusrsor
 :set scrolloff=3
 
+" Enable file type detection.
+" Also load indent files, to automatically do language-dependent indenting.
+filetype plugin indent on
 " Set indentation settings for python scripts
-" works badly with Makefiles
-set tabstop=4
-set expandtab
-set softtabstop=4
-set shiftwidth=4
-set textwidth=80
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 
 " Look for the ctags anywhere in the source code
 set tags=./tags;/
