@@ -51,7 +51,7 @@ nnoremap <A-right> <C-]>
 " Control + LEFT key - jump back from the keyword (tag)
 nnoremap <A-left> <C-t>
 
-" SPACE in command - fold / unfold current function 
+" SPACE in command - fold / unfold current function
 set foldmethod=syntax
 set foldlevel=0
 
