@@ -93,3 +93,6 @@ autocmd BufWinLeave * call clearmatches()
 
 " Enable word spellchecking
 set spell spelllang=en_us
+" Set colorscheme
+set t_Co=256
+colors zenburn
