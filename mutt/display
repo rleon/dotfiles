@@ -13,3 +13,5 @@ unset markers
 # new messages themselves
 uncolor index "~N"
     color index brightyellow default "~N"
+
+set index_format="%4C %Z %{%b %d} %-20.20n (%?l?%4l&%4c?) %s"
