@@ -54,6 +54,7 @@ nnoremap <A-left> <C-t>
 " SPACE in command - fold / unfold current function
 set foldmethod=syntax
 set foldlevel=0
+autocmd BufWinEnter * silent! :%foldopen!
 
 nnoremap <space> zA
 nnoremap <C-z> zM
