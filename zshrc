@@ -53,7 +53,7 @@ source $ZSH/oh-my-zsh.sh
 export USE_CCACHE=1
 export CCACHE_DIR=${HOME}/.ccache
 export CCACHE_BASEDIR=${HOME}
-export PATH="/usr/lib/ccache/:${HOME}/src/sandisk/android-sdk-linux/tools:${HOME}/src/sandisk/android-sdk-linux/platform-tools:${PATH}"
+export PATH="/usr/lib/ccache/:${HOME}/src/sandisk/android-sdk-linux/tools:${HOME}/src/sandisk/android-sdk-linux/platform-tools:${HOME}/src/sandisk/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/bin:${PATH}"
 
 #export PATH="${HOME}/src/sandisk/android-sdk-linux/tools:${HOME}/src/sandisk/android-sdk-linux/platform-tools:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
 # export MANPATH="/usr/local/man:$MANPATH"
