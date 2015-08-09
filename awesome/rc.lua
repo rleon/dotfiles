@@ -38,6 +38,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+os.execute("awsetbg ~/.config/awesome/background/zenburn-cia-background.jpg")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
