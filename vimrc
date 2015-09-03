@@ -13,7 +13,7 @@ call vundle#begin()
 "
 let g:vundle_default_git_proto = 'git'
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'rleon/Zenburn'
 Plugin 'tpope/vim-fugitive'
 Plugin 'freitass/todo.txt-vim'
