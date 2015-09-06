@@ -220,7 +220,11 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,		  }, "F12",    function() awful.util.spawn("gnome-screensaver-command -l") end),
+    awful.key({ modkey,		  }, "l",
+    	function ()
+		awful.util.spawn("sync")
+		awful.util.spawn("xautolock -locknow")
+	end),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
@@ -452,9 +456,8 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-os.execute("pkill nm-applet")
-os.execute("dbus-launch nm-applet &")
--- os.execute("dropbox stop")
--- os.execute("dropbox start")
--- os.execute("gnome-sound-applet&")
-os.execute("xautolock -time 10 -locker \"gnome-screensaver-command -l\"&")
+awful.util.spawn_with_shell('pkill nm-applet')
+awful.util.spawn_with_shell('dbus-launch nm-applet &')
+awful.util.spawn_with_shell('dropbox stop && dropbox start')
+-- awful.util.spawn_with_shell('gnome-sound-applet&')
+awful.util.spawn_with_shell('xautolock -detectsleep -time 10 -locker "gnome-screensaver-command -l"')
