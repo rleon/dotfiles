@@ -18,16 +18,16 @@ download_rate = 0
 upload_rate = 20
 
 # Default directory to save the downloaded torrents.
-directory = /home/leon/torrents/completed
+directory = /home/leonro/torrents/completed
 
 # Default session directory. Make sure you don't run multiple instance
 # of rtorrent using the same session directory. Perhaps using a
 # relative path?
-session = /home/leon/torrents/session
+session = /home/leonro/torrents/session
 
 # Watch a directory for new torrents, and stop those that have been
 # deleted.
-schedule = watch_directory,5,5,load_start=/home/leon/torrents/watch/*.torrent
+schedule = watch_directory,5,5,load_start=/home/leonro/torrents/watch/*.torrent
 schedule = untied_directory,5,5,stop_untied=
 
 # Close torrents when diskspace is low.
