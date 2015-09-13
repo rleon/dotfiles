@@ -19,6 +19,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'freitass/todo.txt-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'wting/gitsessions.vim'
+Plugin 'vim-scripts/linuxsty.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
