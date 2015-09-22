@@ -11,6 +11,8 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+local battery = require("battery")
+
 -- Load Debian menu entries
 require("debian.menu")
 
@@ -118,6 +120,13 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
+batterywidget = wibox.widget.textbox()
+batterywidget_timer = timer({timeout = 5})
+batterywidget_timer:connect_signal("timeout", function()
+	batterywidget:set_text(batteryInfo("BAT1"))
+end)
+batterywidget_timer:start()
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -196,6 +205,7 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
+    right_layout:add(batterywidget)
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
