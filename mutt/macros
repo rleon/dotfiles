@@ -1,7 +1,11 @@
 macro index D \
      "<save-message>+[Gmail]/Trash<enter>" \
      "move message to the trash"
-     
+
 macro index S \
      "<save-message>+[Gmail]/Spam<enter>" \
      "mark message as spam"
+
+macro index \Cy \
+     "!/usr/local/bin/msmtp-runqueue.sh<enter>" \
+     "send messages by flushing msmtp queue"
