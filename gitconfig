@@ -6,6 +6,7 @@
 [push]
 	default = simple
 [alias]
+	st = status
 	b = branch -v
 	co = checkout
 	c = commit -s
