@@ -1,0 +1,12 @@
+[user]
+	email = leon@leon.nu
+	author = Leon Romanovsky
+[core]
+	editor = vim
+[push]
+	default = simple
+[alias]
+	b = branch -v
+	co = checkout
+	c = commit -s
+	fp = format-patch -M
