@@ -16,3 +16,4 @@ subscribe linux-il@cs.huji.ac.il
 subscribe linux-kernel@vger.kernel.org
 subscribe linux-mm@kvack.org
 subscribe linux-mmc@vger.kernel.org
+subscribe linux-rdma@vger.kernel.org

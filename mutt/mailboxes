@@ -6,6 +6,7 @@ set postponed   = "+[Gmail]/Drafts"
 
 mailboxes "=INBOX"
 mailboxes "=ml-kernel-mm"
+mailboxes "=ml-kernel-rdma"
 mailboxes "=ml-group-haifux"
 mailboxes "=ml-group-linux-il"
 mailboxes "=ml-kernel-ac100"
