@@ -1,10 +1,14 @@
 set editor      = "vim"
-set edit_headers
+set edit_headers = yes
 set sendmail    = "/usr/local/bin/msmtp-enqueue.sh"
 
-set realname   = "Leon Romanovsky"
-set from       = "leon@leon.nu"
-set envelope_from
+set realname   	= "Leon Romanovsky"
+set from       	= "leon@leon.nu"
+set use_from	= yes
+set use_envelope_from	= yes
+my_hdr Reply-To: leon@leon.nu
+
+set fast_reply	= yes
 
 unset move           # gmail does that
 set delete           # don't ask, just do
@@ -17,3 +21,6 @@ unset mime_forward
 set forward_format = "Fwd: %s"
 set include
 set forward_quote
+
+alternates "leon@leon.nu|leon@medkio.com"
+set reverse_name = yes
