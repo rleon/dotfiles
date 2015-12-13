@@ -13,3 +13,5 @@
 	co = checkout
 	c = commit -s
 	fp = format-patch -M
+[sendemail]
+	smtpserver = /usr/local/bin/msmtp-enqueue.sh
