@@ -230,7 +230,7 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,		  }, "l",
+    awful.key({ modkey, 	  }, "\\",
     	function ()
 		awful.util.spawn("sync")
 		awful.util.spawn("xautolock -locknow")
