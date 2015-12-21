@@ -1,7 +1,9 @@
 set sort     = threads
 set sort_aux = reverse-last-date-received
 set sort_re
- 
+
+set collapse_unread = no
+
 set pager_index_lines = 8
 set pager_context     = 5
 set pager_stop
@@ -14,4 +16,4 @@ unset markers
 uncolor index "~N"
     color index brightyellow default "~N"
 
-set index_format="%4C %Z %{%b %d} %-20.20n (%?l?%4l&%4c?) %s"
+set index_format="%4C %Z %{%b %d} %-20.20n %?M?(#%03M)&(%4c)? %s %?M?(#%03M)?"
