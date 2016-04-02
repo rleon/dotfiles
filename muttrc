@@ -8,4 +8,5 @@ source ~/.mutt/composing        # Composing & sending.
 source ~/.mutt/display          # Display settings.
 source ~/.mutt/headers          # Customize header display
 source ~/.mutt/lists            # Mailing lists
+source ~/.mutt/aliases          # Address book
 source ~/.mutt/options          # Options.
