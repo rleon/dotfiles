@@ -8,7 +8,10 @@ set use_from	= yes
 set use_envelope_from	= yes
 my_hdr Reply-To: leon@leon.nu
 
+set followup_to = no
+
 set fast_reply	= yes
+#set honor_followup_to
 
 unset move           # gmail does that
 set delete           # don't ask, just do
