@@ -1,0 +1,7 @@
+  color body brightblue default   '^\+.*'
+  color body brightred default    '^-.*'
+  color body brightgreen default  '^(---|\+\+\+) .*'
+  color body brightyellow default '^@@ .*'
+
+color   body    brightwhite     default         ^(Signed-off-by).*
+# Defaults
