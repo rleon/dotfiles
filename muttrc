@@ -10,3 +10,5 @@ source ~/.mutt/headers          # Customize header display
 source ~/.mutt/lists            # Mailing lists
 source ~/.mutt/aliases          # Address book
 source ~/.mutt/options          # Options.
+source ~/.mutt/gpg		# GPG
+source ~/.mutt/colors		# Colors
