@@ -20,7 +20,7 @@ Plugin 'freitass/todo.txt-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'wting/gitsessions.vim'
 Plugin 'vim-scripts/linuxsty.vim'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -57,15 +57,19 @@ autocmd BufWinLeave * call clearmatches()
 " Cache session file for gitsessions.vim
 let g:gitsessions_use_cache=1
 
+" When a file has been detected to have been changed outside of Vim and
+" it has not been changed inside of Vim, automatically read it again.
+set autoread
+
 " Syntastic recommended settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 0
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
 
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_text_checkers = ['proselint']
+" let g:syntastic_python_checkers = ['pylint']
+" let g:syntastic_text_checkers = ['proselint']
