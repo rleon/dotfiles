@@ -4,7 +4,7 @@
 [core]
 	editor = vim
 [push]
-	default = simple
+	default = current
 [pull]
 	rebase = true
 [alias]
@@ -13,5 +13,9 @@
 	co = checkout
 	c = commit -s
 	fp = format-patch -M
+	pl = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --abbrev=12
 [sendemail]
 	smtpserver = /usr/local/bin/msmtp-enqueue.sh
+	suppresscc = self
+[merge]
+	ff = false
