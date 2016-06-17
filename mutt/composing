@@ -3,10 +3,10 @@ set edit_headers = yes
 set sendmail    = "/usr/local/bin/msmtp-enqueue.sh"
 
 set realname   	= "Leon Romanovsky"
-set from       	= "leon@leon.nu"
+set from       	= "leon@kernel.org"
 set use_from	= yes
 set use_envelope_from	= yes
-my_hdr Reply-To: leon@leon.nu
+my_hdr Reply-To: leon@kernel.org
 
 set followup_to = no
 
@@ -25,5 +25,6 @@ set forward_format = "Fwd: %s"
 set include
 set forward_quote
 
-alternates "leon@leon.nu|leon@medkio.com"
+alternates "leon@leon.nu|leon@medkio.com|leon@kernel.org|leonro@mellanox.com"
 set reverse_name = yes
+set reverse_realname = no

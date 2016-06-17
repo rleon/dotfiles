@@ -17,3 +17,7 @@ uncolor index "~N"
     color index brightyellow default "~N"
 
 set index_format="%4C %Z %{%b %d} %-20.20n %?M?(#%03M)&(%4c)? %s %?M?(#%03M)?"
+
+# Removes the disctinciton between old and new. I.e. new messages are always
+# new until they have been read.
+set mark_old = no

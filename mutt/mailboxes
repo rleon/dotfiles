@@ -2,7 +2,14 @@ set mbox_type   = Maildir
 set folder      = $HOME/Mail/leon@leon.nu
 set spoolfile   = "+INBOX"
 set mbox        = "+[Gmail]/All Mail"
-set postponed   = "+[Gmail]/Drafts"
+set postponed   = "+[Gmail].Drafts"
+
+# Automatically log in to this mailbox at startup
+#set spoolfile="imaps://outlook.office365.com/"
+# Define the = shortcut, and the entry point for the folder browser (c?)
+#set folder="imaps://outlook.office365.com/"
+#set record="=Sent"
+#set postponed="=Drafts"
 
 mailboxes "=INBOX"
 mailboxes "=ml-kernel-mm"
