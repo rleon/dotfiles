@@ -28,10 +28,10 @@ PARENTS=($(git show --no-patch --format="%P" $SHA))
 BASE_BR=$(branch_base ${PARENTS[0]} ${PARENTS[1]})
 FREE_PARENT=$(alt_version $BASE_BR $TARGET_BR)
 
-git checkout --detach $FREE_PARENT
+git checkout -q --detach $FREE_PARENT
 git cherry-pick -s ${PARENTS[0]}..${PARENTS[1]}
 
 TMP_BR=$(git rev-parse HEAD)
 
-git checkout $TARGET_BR
+git checkout -q $TARGET_BR
 git merge --ff $TMP_BR
