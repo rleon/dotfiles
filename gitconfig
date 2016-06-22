@@ -2,7 +2,7 @@
 	email = leon@leon.nu
 	author = Leon Romanovsky
 [core]
-	editor = vim
+	editor = vim -p
 [push]
 	default = current
 [pull]
