@@ -6,7 +6,7 @@ set realname   	= "Leon Romanovsky"
 set from       	= "leon@kernel.org"
 set use_from	= yes
 set use_envelope_from	= yes
-my_hdr Reply-To: leon@kernel.org
+#my_hdr Reply-To: leon@kernel.org
 
 set followup_to = no
 
