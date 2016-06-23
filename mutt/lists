@@ -2,19 +2,20 @@
 # Every subscribed mailing list is known. To mark a mailing 
 # list as known, use the ``lists'' command. To mark it 
 # as subscribed, use ``subscribe''.
-subscribe kernel-janitors@vger.kernel.org
+lists kernel-janitors@vger.kernel.org
 subscribe kernel-mentors@selenic.com
 subscribe ecartis@nl.linux.org
-subscribe linux-tegra@vger.kernel.org
-subscribe alsa-devel@alsa-project.org
+lists linux-tegra@vger.kernel.org
+lists alsa-devel@alsa-project.org
 subscribe ac100@lists.launchpad.net
-subscribe linux-f2fs-devel@lists.sourceforge.net
+lists linux-f2fs-devel@lists.sourceforge.net
 subscribe haifux@haifux.org
-subscribe devel@linuxdriverproject.org
+lists devel@linuxdriverproject.org
 subscribe linux-c-programming@vger.kernel.org
 subscribe linux-il@cs.huji.ac.il
 subscribe linux-kernel@vger.kernel.org
 subscribe linux-mm@kvack.org
-subscribe linux-mmc@vger.kernel.org
+lists linux-mmc@vger.kernel.org
 subscribe netdev@vger.kernel.org
 subscribe linux-rdma@vger.kernel.org
+subscribe linux-nvme@lists.infradead.org

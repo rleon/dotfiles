@@ -20,6 +20,7 @@ mailboxes "=ml-devel-linux-c"
 mailboxes "=ml-kernel-mentors"
 mailboxes "=ml-kernel-newbies"
 mailboxes "=netdev-mlnx"
+mailboxes "=ml-kernel-nvme"
 
 bind index <Esc><Tab> next-unread-mailbox
 bind pager <Esc><Tab> next-unread-mailbox
