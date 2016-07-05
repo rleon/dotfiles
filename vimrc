@@ -20,6 +20,7 @@ Plugin 'freitass/todo.txt-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'wting/gitsessions.vim'
 Plugin 'vim-scripts/linuxsty.vim'
+Plugin 'vim-scripts/cscope_macros.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
