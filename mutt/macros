@@ -9,3 +9,13 @@ macro index S \
 macro index \Cy \
      "!/usr/local/bin/msmtp-runqueue.sh<enter>" \
      "send messages by flushing msmtp queue"
+
+bind index \Cp sidebar-prev
+bind index \Cn sidebar-next
+bind index \Co sidebar-open
+bind pager \Cp sidebar-prev
+bind pager \Cn sidebar-next
+bind pager \Co sidebar-open
+
+macro index b '<enter-command>toggle sidebar_visible<enter>'
+macro pager b '<enter-command>toggle sidebar_visible<enter>'
