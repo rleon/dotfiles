@@ -106,3 +106,6 @@ if exists("+showtabline")
     set showtabline=1
     highlight link TabNum Special
 endif
+
+" Vim quickfix list launch files in new tab
+set switchbuf+=usetab,newtab
