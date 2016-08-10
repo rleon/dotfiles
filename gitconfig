@@ -15,6 +15,7 @@
 	fp = format-patch -M
 	pl = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --abbrev=12
 	replay-merge = !git-replay-merge
+	fixes = log -1 --abbrev=12 --format='Fixes: %h (\"%s\")'
 [sendemail]
 	smtpserver = /usr/local/bin/msmtp-enqueue.sh
 	suppresscc = self
