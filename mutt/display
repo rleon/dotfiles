@@ -18,6 +18,15 @@ uncolor index "~N"
 
 set index_format="%4C %Z %{%b %d} %-20.20n %?M?(#%03M)&(%4c)? %s %?M?(#%03M)?"
 
-# Removes the disctinciton between old and new. I.e. new messages are always
+# Removes the disctinction between old and new. I.e. new messages are always
 # new until they have been read.
 set mark_old = no
+
+# prefer plain text
+alternative_order text/plain text/enriched text/html
+
+# auto convert text/html MIME type to text/plain
+auto_view text/html
+
+# run viewer defined in mailcap by <return> in attach view
+bind attach <return> view-mailcap
