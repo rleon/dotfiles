@@ -1,15 +1,16 @@
 [general]
 #List of accounts to be synced, separated by a comma.
-accounts = leon@leon.nu
+accounts = work,private
+maxsyncaccounts = 4
 ui = ttyui
 fsync = False
 socktimeout = 60
 
-[Account leon@leon.nu]
+[Account private]
 # Identifier for the local repository; e.g. the maildir to be synced via IMAP.
-localrepository = leon@leon.nu-local
+localrepository = private-local
 # Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
-remoterepository = leon@leon.nu-remote
+remoterepository = private-remote
 # Status cache. Default is plain, which eventually becomes huge and slow.
 status_backend = sqlite
 # Minutes between syncs
@@ -20,13 +21,13 @@ quick = 10
 # Update notmuch DB
 postsynchook = notmuch new
 
-[Repository leon@leon.nu-local]
+[Repository private-local]
 # Currently, offlineimap only supports maildir and IMAP for local repositories.
 type = Maildir
 # Where should the mail be placed?
-localfolders = ~/Mail/leon@leon.nu
+localfolders = ~/Mail/private
 
-[Repository leon@leon.nu-remote]
+[Repository private-remote]
 # Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
 type = IMAP
 remotehost = imap.gmail.com
@@ -38,6 +39,43 @@ sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 keepalive = 60
 holdconnectionopen = yes
 folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail', '[Gmail]/Important', '[Gmail]/Spam', '[Gmail]/Starred', 'Priority']
+# don't copy locally created folders to remote server.
+# it is needed for patch management
+createfolders = False
+
+[Account work]
+# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+localrepository = work-local
+# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+remoterepository = work-remote
+# Status cache. Default is plain, which eventually becomes huge and slow.
+status_backend = sqlite
+# Minutes between syncs
+autorefresh = 2
+# Number of quick-syncs between auto refreshes. Quick-syncs do not update if the
+# only changes were to IMAP flags
+quick = 10
+# Update notmuch DB
+postsynchook = notmuch new
+
+[Repository work-local]
+# Currently, offlineimap only supports maildir and IMAP for local repositories.
+type = Maildir
+# Where should the mail be placed?
+localfolders = ~/Mail/work
+
+[Repository work-remote]
+# Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+type = IMAP
+remotehost = outlook.office365.com
+remoteuser = leonro@mellanox.com
+ssl = yes
+realdelete = no
+maxconnections = 3
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+keepalive = 60
+holdconnectionopen = yes
+folderfilter = lambda foldername: foldername in ['INBOX', 'Deleted Items', 'Drafts', 'Sent Items']
 # don't copy locally created folders to remote server.
 # it is needed for patch management
 createfolders = False
