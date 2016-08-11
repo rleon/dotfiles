@@ -19,3 +19,9 @@ bind pager \Co sidebar-open
 
 macro index b '<enter-command>toggle sidebar_visible<enter>'
 macro pager b '<enter-command>toggle sidebar_visible<enter>'
+
+# run viewer defined in mailcap by <return> in attach view
+bind attach <return> view-mailcap
+
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"

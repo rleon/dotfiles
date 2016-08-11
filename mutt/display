@@ -27,6 +27,3 @@ alternative_order text/plain text/enriched text/html
 
 # auto convert text/html MIME type to text/plain
 auto_view text/html
-
-# run viewer defined in mailcap by <return> in attach view
-bind attach <return> view-mailcap
