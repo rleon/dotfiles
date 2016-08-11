@@ -3,7 +3,7 @@ set edit_headers = yes
 set sendmail    = "/usr/local/bin/msmtp-enqueue.sh"
 
 set realname   	= "Leon Romanovsky"
-set from       	= "leon@kernel.org"
+#set from       	= "leon@kernel.org"
 set use_from	= yes
 set use_envelope_from	= yes
 #my_hdr Reply-To: leon@kernel.org

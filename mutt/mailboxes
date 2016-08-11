@@ -1,26 +1,25 @@
 set mbox_type   = Maildir
-set folder      = $HOME/Mail/leon@leon.nu
-set spoolfile   = "+INBOX"
-set mbox        = "+[Gmail]/All Mail"
-set postponed   = "+[Gmail].Drafts"
+set folder      = $HOME/Mail/
+# Defaults
+set spoolfile   = "+work/INBOX"
+set postponed   = "+private/[Gmail].Drafts"
 
-# Automatically log in to this mailbox at startup
-#set spoolfile="imaps://outlook.office365.com/"
-# Define the = shortcut, and the entry point for the folder browser (c?)
-#set folder="imaps://outlook.office365.com/"
-#set record="=Sent"
-#set postponed="=Drafts"
+set sidebar_width=30
+set sidebar_visible = no
+set imap_check_subscribed=yes
+color sidebar_new yellow default
 
-mailboxes "=INBOX"
-mailboxes "=ml-kernel-mm"
-mailboxes "=ml-kernel-rdma"
-mailboxes "=ml-group-haifux"
-mailboxes "=ml-group-linux-il"
-mailboxes "=ml-devel-linux-c"
-mailboxes "=ml-kernel-mentors"
-mailboxes "=ml-kernel-newbies"
-mailboxes "=netdev-mlnx"
-mailboxes "=ml-kernel-nvme"
-
-bind index <Esc><Tab> next-unread-mailbox
-bind pager <Esc><Tab> next-unread-mailbox
+mailboxes "+--------- PRIVATE ----------"
+mailboxes "+private/INBOX"
+mailboxes "+--------- ML ---------------"
+mailboxes "+private/ml-kernel-mm"
+mailboxes "+private/ml-kernel-rdma"
+mailboxes "+private/ml-group-haifux"
+mailboxes "+private/ml-group-linux-il"
+mailboxes "+private/ml-devel-linux-c"
+mailboxes "+private/ml-kernel-mentors"
+mailboxes "+private/ml-kernel-newbies"
+mailboxes "+private/netdev-mlnx"
+mailboxes "+private/ml-kernel-nvme"
+mailboxes "+--------- WORK -------------"
+mailboxes "+work/INBOX"

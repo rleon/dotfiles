@@ -2,6 +2,7 @@
 # muttrc - main configuration file.
 #
 
+source ~/.mutt/folder-hooks     # Folder hooks for specific accounts
 source ~/.mutt/mailboxes        # Mailboxes that receive mail
 source ~/.mutt/macros           # Macros.
 source ~/.mutt/composing        # Composing & sending.
