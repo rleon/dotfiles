@@ -64,6 +64,18 @@ Channel private-netdev-mlnx
 Master ":private-remote:netdev-mlnx"
 Slave ":private-local:netdev-mlnx"
 
+Channel private-drafts
+Master ":private-remote:[Gmail]/Drafts"
+Slave ":private-local:drafts"
+
+Channel private-sent
+Master ":private-remote:[Gmail]/Sent Mail"
+Slave ":private-local:sent"
+
+Channel private-trash
+Master ":private-remote:[Gmail]/Trash"
+Slave ":private-local:trash"
+
 Group private
 Channel private-inbox
 Channel private-rdma
@@ -76,3 +88,45 @@ Channel private-nvme
 Channel private-korg
 Channel private-ksummit
 Channel private-netdev-mlnx
+Channel private-drafts
+Channel private-sent
+Channel private-trash
+
+# leonro@mellanox.com
+MaildirStore work-local
+Path ~/mail/work/
+Inbox ~/mail/work/INBOX
+
+IMAPAccount work
+Host outlook.office365.com
+User leonro@mellanox.com
+PassCmd "grep 'machine outlook.office365.com' -A2 $HOME/.netrc | grep password | awk '{print $2}'"
+UseIMAPS yes
+RequireSSL yes
+UseTLSv1 yes
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore work-remote
+Account work
+
+Channel work-inbox
+Master ":work-remote:INBOX"
+Slave ":work-local:INBOX"
+
+Channel work-sent
+Master ":work-remote:Sent Items"
+Slave ":work-local:sent"
+
+Channel work-trash
+Master ":work-remote:Deleted Items"
+Slave ":work-local:trash"
+
+Channel work-drafts
+Master ":work-remote:Drafts"
+Slave ":work-local:drafts"
+
+Group work
+Channel work-inbox
+Channel work-sent
+Channel work-trash
+Channel work-drafts
