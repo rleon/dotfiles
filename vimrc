@@ -15,12 +15,11 @@ let g:vundle_default_git_proto = 'git'
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'rleon/Zenburn'
-Plugin 'tpope/vim-fugitive'
 Plugin 'freitass/todo.txt-vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'wting/gitsessions.vim'
 Plugin 'vim-scripts/linuxsty.vim'
 Plugin 'vim-scripts/cscope_macros.vim'
+Plugin 'tpope/vim-obsession'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -109,3 +108,7 @@ endif
 
 " Vim quickfix list launch files in new tab
 set switchbuf+=usetab,newtab
+
+" Remove trailing white spaces
+" http://vim.wikia.com/wiki/Remove_unwanted_spaces
+autocmd BufWritePre * %s/\s\+$//e
