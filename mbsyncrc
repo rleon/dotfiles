@@ -1,0 +1,78 @@
+Create Both
+Expunge Both
+SyncState *
+
+# leon@leon.nu
+# leon@kernel.org
+MaildirStore private-local
+Path ~/mail/private/
+Inbox ~/mail/private/INBOX
+
+IMAPAccount private
+Host imap.gmail.com
+User leon@leon.nu
+PassCmd "grep 'machine imap.gmail.com' -A2 $HOME/.netrc | grep password | awk '{print $2}'"
+UseIMAPS yes
+RequireSSL yes
+UseTLSv1 yes
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore private-remote
+Account private
+
+Channel private-inbox
+Master ":private-remote:INBOX"
+Slave ":private-local:INBOX"
+
+Channel private-rdma
+Master ":private-remote:ml-kernel-rdma"
+Slave ":private-local:ml-kernel-rdma"
+
+Channel private-linux-c
+Master ":private-remote:ml-devel-linux-c"
+Slave ":private-local:ml-devel-linux-c"
+
+Channel private-haifux
+Master ":private-remote:ml-group-haifux"
+Slave ":private-local:ml-group-haifux"
+
+Channel private-mentors
+Master ":private-remote:ml-kernel-mentors"
+Slave ":private-local:ml-kernel-mentors"
+
+Channel private-mm
+Master ":private-remote:ml-kernel-mm"
+Slave ":private-local:ml-kernel-mm"
+
+Channel private-newbies
+Master ":private-remote:ml-kernel-newbies"
+Slave ":private-local:ml-kernel-newbies"
+
+Channel private-nvme
+Master ":private-remote:ml-kernel-nvme"
+Slave ":private-local:ml-kernel-nvme"
+
+Channel private-korg
+Master ":private-remote:ml-kernel-org"
+Slave ":private-local:ml-kernel-org"
+
+Channel private-ksummit
+Master ":private-remote:ml-kernel-summit"
+Slave ":private-local:ml-kernel-summit"
+
+Channel private-netdev-mlnx
+Master ":private-remote:netdev-mlnx"
+Slave ":private-local:netdev-mlnx"
+
+Group private
+Channel private-inbox
+Channel private-rdma
+Channel private-linux-c
+Channel private-haifux
+Channel private-mentors
+Channel private-mm
+Channel private-newbies
+Channel private-nvme
+Channel private-korg
+Channel private-ksummit
+Channel private-netdev-mlnx
