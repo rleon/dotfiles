@@ -72,9 +72,9 @@ Channel private-sent
 Master ":private-remote:[Gmail]/Sent Mail"
 Slave ":private-local:sent"
 
-Channel private-trash
-Master ":private-remote:[Gmail]/Trash"
-Slave ":private-local:trash"
+#Channel private-trash
+#Master ":private-remote:[Gmail]/Trash"
+#Slave ":private-local:trash"
 
 Group private
 Channel private-inbox
@@ -90,7 +90,7 @@ Channel private-ksummit
 Channel private-netdev-mlnx
 Channel private-drafts
 Channel private-sent
-Channel private-trash
+#Channel private-trash
 
 # leonro@mellanox.com
 MaildirStore work-local
