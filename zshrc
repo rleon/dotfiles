@@ -64,6 +64,8 @@ stty icrnl
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+export='vim'
+
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -86,3 +88,5 @@ stty icrnl
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tmux="TERM=screen-256color tmux"
+alias vpn="sudo openconnect --juniper https://ssl-il.mellanox.com"
+alias mail-sync="while [ 1 ]; do mbsync work; mbsync private; echo 'Going to sleep'; sleep 3m; done"
