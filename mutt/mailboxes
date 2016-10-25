@@ -1,5 +1,5 @@
 set mbox_type   = Maildir
-set folder      = $HOME/Mail/
+set folder      = $HOME/mail/
 # Defaults
 set spoolfile   = "+work/INBOX"
 set postponed   = "+work/drafts"
@@ -9,22 +9,25 @@ set sidebar_visible = yes
 set imap_check_subscribed=yes
 color sidebar_new yellow default
 
-mailboxes "+--------- PRIVATE ----------"
+mailboxes "+--------- FAVORITES --------"
+mailboxes "+work/INBOX"
+mailboxes "+private/ml-kernel-rdma"
+mailboxes "+private/ml-kernel-summit"
 mailboxes "+private/INBOX"
-mailboxes "+private/sent"
-mailboxes "+private/drafts"
+mailboxes "+private/ml-kernel-org"
+mailboxes "+private/netdev-mlnx"
 mailboxes "+--------- ML ---------------"
 mailboxes "+private/ml-kernel-mm"
-mailboxes "+private/ml-kernel-rdma"
 mailboxes "+private/ml-group-haifux"
 mailboxes "+private/ml-group-linux-il"
 mailboxes "+private/ml-devel-linux-c"
 mailboxes "+private/ml-kernel-mentors"
 mailboxes "+private/ml-kernel-newbies"
-mailboxes "+private/netdev-mlnx"
 mailboxes "+private/ml-kernel-nvme"
+mailboxes "+--------- PRIVATE ----------"
+mailboxes "+private/sent"
+mailboxes "+private/drafts"
 mailboxes "+--------- WORK -------------"
-mailboxes "+work/INBOX"
 mailboxes "+work/sent"
 mailboxes "+work/drafts"
 mailboxes "+work/trash"

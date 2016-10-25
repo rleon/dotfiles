@@ -1,5 +1,5 @@
 set spoolfile   = "+private/INBOX"
-set postponed   = "+private/[Gmail].Drafts"
-set record    = "+private/[Gmail].Sent Mail"
+set postponed   = "+private/drafts"
+set record    	= "+private/sent"
 
-set from      = "leon@leon.nu"
+set from      	= "leon@leon.nu"

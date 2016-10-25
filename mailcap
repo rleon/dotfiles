@@ -1,2 +1,4 @@
 text/html; firefox file://%s;
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/plain; view %s ; needsterminal
+text/x-chdr; view %s ; needsterminal

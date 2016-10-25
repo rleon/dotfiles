@@ -1,5 +1,5 @@
 set spoolfile   = "+work/INBOX"
-set postponed   = "+work/Drafts"
-set record    = "+work/Sent Items"
+set postponed   = "+work/drafts"
+set record    	= "+work/sent"
 
-set from      = "leonro@mellanox.com"
+set from      	= "leonro@mellanox.com"

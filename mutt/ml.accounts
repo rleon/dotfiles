@@ -1,5 +1,5 @@
 set spoolfile   = "+private/ml-kernel-rdma"
-set postponed   = "+private/[Gmail].Drafts"
-set record    = "+private/[Gmail].Sent Mail"
+set postponed   = "+private/drafts"
+set record    	= "+private/sent"
 
-set from      = "leon@kernel.org"
+set from      	= "leon@kernel.org"
