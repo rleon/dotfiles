@@ -34,6 +34,7 @@ colors zenburn
 
 set number
 set hlsearch
+set incsearch
 " F2			- Toggle file browsing (NERDtree)
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <leader>gss :GitSessionSave<cr>
