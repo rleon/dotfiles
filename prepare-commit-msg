@@ -1,0 +1,15 @@
+#!/bin/sh
+
+removeIssue() {
+	`sed -i "/^Issue:[ 0-9]*/Id" $MSG`
+}
+
+removeChangeId () {
+	`sed -i "/^Change-id:[ 0-9]*/Id" $MSG`
+}
+
+if test "true" != "`git config --bool --get gerrit.createChangeId`"
+then
+	removeIssue
+	removeChangeId
+fi
