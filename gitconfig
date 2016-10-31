@@ -26,6 +26,13 @@
 	fixes = log --abbrev=12 --format='Fixes: %h (\"%s\")'
 	l = log --oneline
 	sp = !bash git-switch-profile
+	send-rdma = send-email --to=dledford@redhat.com --cc=linux-rdma@vger.kernel.org
+[format]
+	signoff = true
+[linux-rdma]
+	url= https://patchwork.kernel.org/xmlrpc/
+[netdev]
+	url= https://patchwork.ozlabs.org/xmlrpc/
 [sendemail]
 	smtpserver = /usr/local/bin/msmtp-enqueue.sh
 	suppresscc = self
