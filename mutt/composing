@@ -1,6 +1,7 @@
 set editor      = "vim"
 set edit_headers = yes
 set sendmail    = "/usr/local/bin/msmtp-enqueue.sh"
+set sendmail_wait=-1
 
 set realname   	= "Leon Romanovsky"
 #set from       	= "leon@kernel.org"

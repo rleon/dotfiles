@@ -13,8 +13,8 @@ set tilde
 unset markers
 
 # new messages themselves
-uncolor index "~N"
-    color index brightyellow default "~N"
+# uncolor index "~N"
+#    color index brightyellow default "~N"
 
 set index_format="%4C %Z %{%b %d} %-20.20n %?M?(#%03M)&(%4c)? %s %?M?(#%03M)?"
 

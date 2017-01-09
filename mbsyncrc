@@ -12,9 +12,11 @@ IMAPAccount private
 Host imap.gmail.com
 User leon@leon.nu
 PassCmd "grep 'machine imap.gmail.com' -A2 $HOME/.netrc | grep password | awk '{print $2}'"
-UseIMAPS yes
-RequireSSL yes
-UseTLSv1 yes
+# UseIMAPS yes
+# RequireSSL yes
+# UseTLSv1 yes
+SSLType IMAPS
+SSLVersions TLSv1.2
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore private-remote
@@ -31,6 +33,10 @@ Slave ":private-local:ml-kernel-rdma"
 Channel private-linux-c
 Master ":private-remote:ml-devel-linux-c"
 Slave ":private-local:ml-devel-linux-c"
+
+Channel private-linux-il
+Master ":private-remote:ml-group-linux-il"
+Slave ":private-local:ml-group-linux-il"
 
 Channel private-haifux
 Master ":private-remote:ml-group-haifux"
@@ -80,6 +86,7 @@ Group private
 Channel private-inbox
 Channel private-rdma
 Channel private-linux-c
+Channel private-linux-il
 Channel private-haifux
 Channel private-mentors
 Channel private-mm
@@ -101,9 +108,11 @@ IMAPAccount work
 Host outlook.office365.com
 User leonro@mellanox.com
 PassCmd "grep 'machine outlook.office365.com' -A2 $HOME/.netrc | grep password | awk '{print $2}'"
-UseIMAPS yes
-RequireSSL yes
-UseTLSv1 yes
+# UseIMAPS yes
+# RequireSSL yes
+# UseTLSv1 yes
+SSLType IMAPS
+SSLVersions TLSv1.2
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore work-remote

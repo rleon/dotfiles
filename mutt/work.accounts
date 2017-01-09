@@ -3,3 +3,4 @@ set postponed   = "+work/drafts"
 set record    	= "+work/sent"
 
 set from      	= "leonro@mellanox.com"
+set pgp_autosign = no

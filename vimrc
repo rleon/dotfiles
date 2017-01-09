@@ -1,65 +1,21 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-let g:vundle_default_git_proto = 'git'
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'rleon/Zenburn'
-Plugin 'freitass/todo.txt-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/linuxsty.vim'
-Plugin 'vim-scripts/cscope_macros.vim'
-Plugin 'tpope/vim-obsession'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
 " Set indentation settings for python scripts
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 
-" Put your non-Plugin stuff after this line
-" Set colorscheme
-set t_Co=256
-colors zenburn
-
 set number
 set hlsearch
-set incsearch
-" F2			- Toggle file browsing (NERDtree)
-nnoremap <F2> :NERDTreeToggle<CR>
-nnoremap <leader>gss :GitSessionSave<cr>
-nnoremap <leader>gsl :GitSessionLoad<cr>
-nnoremap <leader>gsd :GitSessionDelete<cr>
+syntax on
+
+set t_Co=256
+colorscheme molokai
+let g:rehash256 = 1
 
 " Enable word spellchecking
-set spell spelllang=en_us
+" set spell spelllang=en_us
+setlocal spell spelllang=en_us
+
 " Always show at least 3 lines below the cusrsor
 set scrolloff=3
-
-" Highlight trailing whitespace in red
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-
-" Cache session file for gitsessions.vim
-" let g:gitsessions_use_cache=1
-
-" When a file has been detected to have been changed outside of Vim and
-" it has not been changed inside of Vim, automatically read it again.
-set autoread
 
 " Rename tabs to show tab number.
 " (Based on http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
@@ -113,3 +69,16 @@ set switchbuf+=usetab,newtab
 " Remove trailing white spaces
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd BufWritePre * %s/\s\+$//e
+
+" To limit the width of text to 72 character for mutt
+" au BufRead /tmp/mutt-* set tw=72
+
+augroup filetypedetect
+	 " Mail
+	 autocmd BufRead,BufNewFile *mutt-*	 setfiletype mail
+	 " Add Reviewed-by tag and delete rest of the email
+	function! RBtag()
+		r~/.vim/mutt/rb-tag.txt
+	endfunction
+	:nmap <C-t> :call RBtag()<CR>2j<CR>dG<CR>
+augroup END

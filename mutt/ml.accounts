@@ -3,3 +3,4 @@ set postponed   = "+private/drafts"
 set record    	= "+private/sent"
 
 set from      	= "leon@kernel.org"
+set pgp_autosign = yes

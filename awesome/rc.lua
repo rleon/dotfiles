@@ -13,6 +13,9 @@ local menubar = require("menubar")
 
 local battery = require("battery")
 
+require("awful.remote")
+require("screenful")
+
 -- Load Debian menu entries
 require("debian.menu")
 
@@ -469,8 +472,10 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
+awful.util.spawn_with_shell('xset -dpms')
 awful.util.spawn_with_shell('pkill nm-applet')
 awful.util.spawn_with_shell('dbus-launch nm-applet &')
 awful.util.spawn_with_shell('dropbox stop && dropbox start')
 -- awful.util.spawn_with_shell('gnome-sound-applet&')
-awful.util.spawn_with_shell('xautolock -detectsleep -time 10 -locker "gnome-screensaver-command -l"')
+-- awful.util.spawn_with_shell('xautolock -detectsleep -time 10 -locker "gnome-screensaver-command -l"')
+awful.util.spawn_with_shell('xautolock -detectsleep -time 10 -locker "i3lock -f"')
