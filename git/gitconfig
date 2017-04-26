@@ -1,0 +1,62 @@
+[user]
+	email = leon@kernel.org
+	author = Leon Romanovsky
+	createChangeId = false
+	smtpuser = leon@kernel.org
+	from = Leon Romanovsky <leon@kernel.org>
+	signingkey = leon@kernel.org
+	name = Leon Romanovsky
+[work]
+	email = leonro@mellanox.com
+	createChangeId = true
+	smtpuser = leonro@mellanox.com
+	from = Leon Romanovsky <leonro@mellanox.com>
+[core]
+	editor = vim -p
+[push]
+	default = current
+[pull]
+	rebase = true
+[alias]
+	st = status
+	b = branch -v
+	co = checkout
+	c = commit -s
+	fp = format-patch -M
+	pl = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --abbrev=12
+	fixes = log --abbrev=12 --format='Fixes: %h (\"%s\")'
+	l = log --oneline
+	sp = !bash git-switch-profile
+	send-rdma = send-email --to=\"Doug Ledford <dledford@redhat.com>\" --cc=linux-rdma@vger.kernel.org
+	send-internal = send-email --to=linux-internal@mellanox.com
+	# Usage: git signoff-rebase [base-commit]
+	signoff-rebase = "!GIT_SEQUENCE_EDITOR='sed -i -re s/^pick/e/' sh -c 'git rebase -i $1 && while test -f .git/rebase-merge/interactive; do git commit --amend --signoff --no-edit && git rebase --continue; done' -"
+	smatch = "!make CHECK=\"~/src/smatch/smatch -p=kernel\" C=1 drivers/infiniband/ drivers/net/ethernet/mellanox/ -s"
+	sparse = "!make CHECK=\"~/src/sparse/sparse\" C=2 drivers/infiniband/ drivers/net/ethernet/mellanox/ -s"
+	build-next = "!git co rdma-next && sh ~/src/merge/order.merge"
+	build-queue = "!git co queue-next && git remote update saeed && git reset --hard saeed/testing/net-next && git merge --no-ff --no-edit rdma-next"
+	sync = "!git remote update && git push backup --mirror"
+	ci = "!ssh -n -f dev-l-vrt-152.lab.mtl.com  'nohup sh /labhome/leonro/src/tools/ci.sh > /dev/null 2>&1 &'"
+	sync-all = "!cd $HOME/src/linux-rdma && git sync && cd $HOME/src/iproute2 && git sync && cd $HOME/src/smatch && git sync && cd $HOME/src/sparse && git sync && cd $HOME/src/simx && git sync && cd $HOME/src/rdma-core && git sync && cd $HOME/src/"
+[format]
+	signoff = true
+[linux-rdma]
+	url= https://patchwork.kernel.org/xmlrpc/
+[netdev]
+	url= https://patchwork.ozlabs.org/xmlrpc/
+[sendemail]
+	smtpserver = /usr/local/bin/msmtp-enqueue.sh
+	suppresscc = self
+	signedoffbycc = true
+	cccover = true
+	tocover = true
+[merge]
+	ff = false
+	log = true
+[rerere]
+	enabled = true
+	autoupdate = true
+[release]
+	api-token = SECRET_KEY
+	pre-regex = ^v\\d+(\\.\\d+){,2}(-(alpha|beta|rc)\\d+.*)$
+	tag-regex = ^v\\d+(\\.\\d+){,2}$
