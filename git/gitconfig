@@ -27,10 +27,12 @@
 	url= https://patchwork.ozlabs.org/xmlrpc/
 [sendemail]
 	smtpserver = /usr/local/bin/msmtp-enqueue.sh
-	suppresscc = self
+#	suppresscc = self
 	signedoffbycc = true
 	cccover = true
 	tocover = true
+#	suppresscc = bodycc
+	ccCmd = "sed -n -e '/Cc: <stable@vger.kernel.org>/d' -e '/^Cc: /s///p' -e '/^---/q' $1"
 [merge]
 	ff = false
 	log = true
