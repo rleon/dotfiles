@@ -1,0 +1,36 @@
+#!/bin/bash
+
+X_USER=leonro
+export DISPLAY=:0
+export XAUTHORITY=/home/$X_USER/.Xauthority
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+# Home monitor
+HM=`xrandr | grep "DP-2 connected"`
+
+# Work dock station
+LM=`xrandr | grep "DP-2-3 connected"`
+CM=`xrandr | grep "DP-2-2 connected"`
+
+if [ "$HM" != "" ]; then
+	# is connected
+	xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+	xrandr --addmode DP-2 "1920x1080_60.00"
+	xrandr --output DP-2 --mode "1920x1080_60.00" --left-of eDP-1 --auto
+else
+	if  [ "$LM" != "" -a "$CM" != "" ]; then
+		xrandr --output DP-2-2 --auto --left-of eDP-1
+		xrandr --output DP-2-3 --auto --left-of DP-2-2
+	else
+		# not connected
+		xrandr --output DP-2 --off --output eDP-1 --auto
+		xrandr --delmode DP-2 "1920x1080_60.00"
+		xrandr --rmmode "1920x1080_60.00"
+		xrandr --output DP-2-2 --off --output eDP-1 --auto
+		xrandr --output DP-2-3 --off --output eDP-1 --auto
+	fi
+fi
+
+# Restart Awesome
+pkill -HUP awesome
+
