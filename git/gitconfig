@@ -17,6 +17,8 @@
 	default = current
 [pull]
 	rebase = true
+[rebase]
+	autoSquash = true
 [include]
 	path = .gitaliases
 [format]
