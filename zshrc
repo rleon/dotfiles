@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=/usr/lib/ccache/bin:/usr/local/bin/:$PATH
+export GOPATH=$HOME/go
+export PATH=/usr/lib/ccache/bin:/usr/local/bin/:$HOME/.gem/ruby/2.4.0/bin:$GOPATH/bin:$HOME/src/tools/:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/leonro/.oh-my-zsh
@@ -88,6 +89,8 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias tmux="TERM=screen-256color tmux"
-alias vpn="sudo openconnect --juniper https://ssl-il.mellanox.com"
+alias vpn="sudo openconnect --juniper https://ssl-il.mellanox.com --user=leonro --authgroup Mellanox_VIP_Access_App --servercert sha256:cd8bc44a2b2d6d05eecceb80f0ffd43e5d569245a451a6c19e5e47a9d486b687"
 alias mail-sync="while [ 1 ]; do mbsync work; mbsync private; echo 'Going to sleep'; sleep 3m; done"
-alias dev-cli="python ~/src/dev-cli/dev-cli"
+alias wvnc="vncviewer 10.209.44.59:1"
+# added by travis gem
+[ -f /home/leonro/.travis/travis.sh ] && source /home/leonro/.travis/travis.sh
