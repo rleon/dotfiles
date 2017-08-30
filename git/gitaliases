@@ -5,14 +5,13 @@
 	c = commit -s
 	fp = format-patch -M
 	pl = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --abbrev=12
-	fixes = log --abbrev=12 --format='Fixes: %h (\"%s\")'
+	fixes = log --abbrev=12 -1 --format='Fixes: %h (\"%s\")'
 	l = log --oneline
 	sp = !bash git-switch-profile
 	send-rdma = send-email --to=\"Doug Ledford <dledford@redhat.com>\" --cc=linux-rdma@vger.kernel.org
 	send-internal = "!git sp work && git send-email --to=linux-internal@mellanox.com"
 	# Usage: git signoff-rebase [base-commit]
 	signoff-rebase = "!GIT_SEQUENCE_EDITOR='sed -i -re s/^pick/e/' sh -c 'git rebase -i $1 && while test -f .git/rebase-merge/interactive; do git commit --amend --signoff --no-edit && git rebase --continue; done' -"
-	build-next = "!git co rdma-next && sh ~/src/merge/order.merge"
 	build-queue = "!git co queue-next && git remote update saeed && git reset --hard saeed/net-next && git merge --no-ff --no-edit rdma-next"
 	# git sync - sync current folder
 	# git sync all - sync all known folders
