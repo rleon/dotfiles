@@ -1,6 +1,7 @@
 [alias]
 	st = status
-	b = branch -v
+	br = branch -v
+	rb = rebase -i
 	co = checkout
 	c = commit -s
 	fp = format-patch -M
