@@ -57,6 +57,8 @@ URxvt*color13: #bb88dd
 URxvt*color14: #4eb4fa
 URxvt*color15: #d0d0d0
 
+URxvt.letterSpace: -1
+
 URxvt.perl-ext-common: font-size
 URxvt.keysym.C-Up:     font-size:increase
 URxvt.keysym.C-Down:   font-size:decrease
