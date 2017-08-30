@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 filetype plugin indent on    " required
 " Set indentation settings for python scripts
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
@@ -75,10 +77,27 @@ autocmd BufWritePre * %s/\s\+$//e
 
 augroup filetypedetect
 	 " Mail
-	 autocmd BufRead,BufNewFile *mutt-*	 setfiletype mail
+	autocmd BufRead,BufNewFile *mutt-* setfiletype mail
 	 " Add Reviewed-by tag and delete rest of the email
 	function! RBtag()
 		r~/.vim/mutt/rb-tag.txt
 	endfunction
-	:nmap <C-t> :call RBtag()<CR>2j<CR>dG<CR>
+	nmap rt :call RBtag()<CR>2j<CR>dG<CR>
+augroup END
+
+" Autoread works in gVIM only, but little help is needed for VIM.
+" https://stackoverflow.com/questions/2490227/how-does-vims-autoread-work
+set autoread
+augroup checktime
+    au!
+    if !has("gui_running")
+        "silent! necessary otherwise throws errors when using command
+        "line window.
+        autocmd BufEnter        * silent! checktime
+        autocmd CursorHold      * silent! checktime
+        autocmd CursorHoldI     * silent! checktime
+        "these two _may_ slow things down. Remove if they do.
+        autocmd CursorMoved     * silent! checktime
+        autocmd CursorMovedI    * silent! checktime
+    endif
 augroup END
