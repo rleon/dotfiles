@@ -70,6 +70,10 @@ Channel private-netdev-mlnx
 Master ":private-remote:netdev-mlnx"
 Slave ":private-local:netdev-mlnx"
 
+Channel private-netdev
+Master ":private-remote:ml-kernel-netdev"
+Slave ":private-local:ml-kernel-netdev"
+
 Channel private-drafts
 Master ":private-remote:[Gmail]/Drafts"
 Slave ":private-local:drafts"
@@ -95,6 +99,7 @@ Channel private-nvme
 Channel private-korg
 Channel private-ksummit
 Channel private-netdev-mlnx
+Channel private-netdev
 Channel private-drafts
 Channel private-sent
 #Channel private-trash
