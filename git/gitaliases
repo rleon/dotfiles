@@ -5,8 +5,11 @@
 	co = checkout
 	c = commit -s
 	fp = format-patch -M
+	grpe = grep
 	pl = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --abbrev=12
 	fixes = log --abbrev=12 -1 --format='Fixes: %h (\"%s\")'
+	fixup = commit -s --fixup
+	up = add --update
 	l = log --oneline
 	sp = !bash git-switch-profile
 	send-rdma = send-email --to=\"Doug Ledford <dledford@redhat.com>\" --cc=linux-rdma@vger.kernel.org
@@ -16,6 +19,7 @@
 	build-queue = "!git co queue-next && git remote update saeed && git reset --hard saeed/net-next && git merge --no-ff --no-edit rdma-next"
 	# git sync - sync current folder
 	# git sync all - sync all known folders
-	sync = "!f() { if [ "r$1" = "rall" ]; then FOLDERS=(linux-rdma iproute2 smatch sparse rdma-core); for i in "${FOLDERS[@]}"; do cd $HOME/src/${i} && echo "syncing ${i}" && git sync; done; else git remote update && git push backup --mirror; fi;};f"
+	sync = "!f() { if [ "r$1" = "rall" ]; then FOLDERS=(linux-rdma iproute2 smatch sparse rdma-core); for i in "${FOLDERS[@]}"; do cd $HOME/src/${i} && echo "syncing ${i}" && git sync; done; else git remote update --prune && git push backup --mirror; fi;};f"
 	undo = reset --hard
 	reword = commit -s --amend
+	mcp = "!f() { git sp user && git cherry-pick $1 && git reword;};f"
