@@ -54,9 +54,9 @@ Channel private-newbies
 Master ":private-remote:ml-kernel-newbies"
 Slave ":private-local:ml-kernel-newbies"
 
-Channel private-nvme
-Master ":private-remote:ml-kernel-nvme"
-Slave ":private-local:ml-kernel-nvme"
+#Channel private-nvme
+#Master ":private-remote:ml-kernel-nvme"
+#Slave ":private-local:ml-kernel-nvme"
 
 Channel private-korg
 Master ":private-remote:ml-kernel-org"
@@ -66,9 +66,9 @@ Channel private-ksummit
 Master ":private-remote:ml-kernel-summit"
 Slave ":private-local:ml-kernel-summit"
 
-Channel private-netdev-mlnx
-Master ":private-remote:netdev-mlnx"
-Slave ":private-local:netdev-mlnx"
+#Channel private-netdev-mlnx
+#Master ":private-remote:netdev-mlnx"
+#Slave ":private-local:netdev-mlnx"
 
 Channel private-netdev
 Master ":private-remote:ml-kernel-netdev"
@@ -95,10 +95,10 @@ Channel private-haifux
 Channel private-mentors
 Channel private-mm
 Channel private-newbies
-Channel private-nvme
+#Channel private-nvme
 Channel private-korg
 Channel private-ksummit
-Channel private-netdev-mlnx
+#Channel private-netdev-mlnx
 Channel private-netdev
 Channel private-drafts
 Channel private-sent
