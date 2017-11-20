@@ -101,3 +101,6 @@ augroup checktime
         autocmd CursorMovedI    * silent! checktime
     endif
 augroup END
+
+" Exti/return to/from shell
+noremap <C-d> :sh<cr>
