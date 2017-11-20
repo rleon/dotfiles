@@ -17,8 +17,7 @@ bind pager \Cp sidebar-prev
 bind pager \Cn sidebar-next
 bind pager \Co sidebar-open
 
-macro index b '<enter-command>toggle sidebar_visible<enter>'
-macro pager b '<enter-command>toggle sidebar_visible<enter>'
+macro pager,index b '<enter-command>toggle sidebar_visible<enter>'
 
 # run viewer defined in mailcap by <return> in attach view
 bind attach <return> view-mailcap
