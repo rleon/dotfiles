@@ -94,7 +94,7 @@ export EDITOR='vim'
 alias tmux="TERM=screen-256color tmux"
 alias vpn="sudo openconnect --juniper https://ssl-il.mellanox.com --user=leonro --authgroup Mellanox_VIP_Access_App --servercert sha256:cd8bc44a2b2d6d05eecceb80f0ffd43e5d569245a451a6c19e5e47a9d486b687"
 alias mail-sync="while [ 1 ]; do mbsync work; mbsync private; echo 'Going to sleep'; sleep 3m; done"
-alias wvnc="vncviewer 10.209.44.59:1"
+alias wmosh="mosh 10.137.198.1"
 
 eval $(keychain --eval -Q --quiet id_rsa)
 
