@@ -23,7 +23,9 @@ set index_format="%4C %Z %{%b %d} %-20.20n %?M?(#%03M)&(%4c)? %s %?M?(#%03M)?"
 set mark_old = no
 
 # prefer plain text
-alternative_order text/plain text/enriched text/html
+alternative_order text/calendar text/plain text/enriched text/html
+
+auto_view text/calendar application/ics
 
 # auto convert text/html MIME type to text/plain
 auto_view text/html
