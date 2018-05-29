@@ -11,16 +11,24 @@
 	fixup = commit -s --fixup
 	up = add --update
 	l = log --oneline
-	sp = !bash git-switch-profile
 	send-internal = "!git sp work && git send-email --to=linux-internal@mellanox.com"
+	send-upstream = send-email --suppress-cc=bodycc
 	# Usage: git signoff-rebase [base-commit]
 	signoff-rebase = "!GIT_SEQUENCE_EDITOR='sed -i -re s/^pick/e/' sh -c 'git rebase -i $1 && while test -f .git/rebase-merge/interactive; do git commit --amend --signoff --no-edit && git rebase --continue; done' -"
-	build-next = "!git co queue-next && git remote update saeed && git reset --hard saeed/net-next && git merge --no-ff --no-edit rdma-next"
-	build-rc = "!git co queue-rc && git remote update saeed && git reset --hard saeed/net && git merge --no-ff --no-edit rdma-rc"
-	# git sync - sync current folder
-	# git sync all - sync all known folders
-	sync = "!f() { if [ "r$1" = "rall" ]; then FOLDERS=(linux-rdma iproute2 smatch sparse rdma-core); for i in "${FOLDERS[@]}"; do cd $HOME/src/${i} && echo "syncing ${i}" && git sync; done; else git remote update --prune && git push backup --mirror; fi;};f"
+	dirt = config gerrit.createChangeId true
+	undirt = config gerrit.createChangeId false
 	undo = reset --hard
-	reword = commit -s --amend
-	mcp = "!f() { git sp user && git cherry-pick $1 && git reword;};f"
+	build-next = "!git co queue-next && git remote update saeed && git undo saeed/net-next &&  git merge --no-ff --no-edit testing/rdma-next"
+	build-rc = "!git co queue-rc && git remote update saeed && git undo saeed/net && git merge --no-ff --no-edit testing/rdma-rc"
+	build-testing = "!git fetch rdma && git co testing/rdma-rc && git undo rdma-rc && git merge --no-edit master && \
+			  git co testing/rdma-next && git undo rdma/wip/for-testing && git merge --no-edit testing/rdma-rc && \
+			  git merge --no-edit rdma-next && git build-rc && git build-next"
+	push-testing = "!git push -f origin mlx-next mlx-rc rdma-rc rdma-next testing/rdma-rc testing/rdma-next master && git push -f ml master queue-next queue-rc"
+	reword = commit --amend
 	rgrep = "!f() { git grep $1 drivers/infiniband/ include/rdma/ include/uapi/rdma/;};f"
+	fwd-rc = rebase --onto remotes/rdma/for-rc --root rdma-rc
+	fwd-next = rebase --onto remotes/rdma/for-next --root rdma-next
+	numstat = log -M --oneline --numstat --no-merges
+	count = rev-list --count --no-merges
+	cumulutive = diff -M --dirstat=2,cumulative
+	mcp = "!f() { git cherry-pick $1 && x clean && git show;};f"
