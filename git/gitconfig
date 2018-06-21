@@ -1,16 +1,12 @@
 [user]
-	email = leon@kernel.org
 	author = Leon Romanovsky
-	createChangeId = false
-	smtpuser = leon@kernel.org
-	from = Leon Romanovsky <leon@kernel.org>
-	signingkey = leon@kernel.org
 	name = Leon Romanovsky
-[work]
 	email = leonro@mellanox.com
-	createChangeId = true
-	smtpuser = leonro@mellanox.com
-	from = Leon Romanovsky <leonro@mellanox.com>
+	signingKey = 921AFFAF83A9D7FD38CAA681E4637B88367258A7
+[gpg]
+	program = gpg2
+[tag]
+	forceSignAnnotated = true
 [core]
 	editor = vim -p
 [push]
@@ -29,12 +25,15 @@
 	url= https://patchwork.ozlabs.org/xmlrpc/
 [sendemail]
 	smtpserver = /usr/local/bin/msmtp-enqueue.sh
-#	suppresscc = self
+	suppresscc = self
 	signedoffbycc = true
 	cccover = true
 	tocover = true
-#	suppresscc = bodycc
-	ccCmd = "sed -n -e '/Cc: <stable@vger.kernel.org>/d' -e '/^Cc: /s///p' -e '/^---/q' $1"
+	chainReplyTo = false
+	confirm = always
+	from = Leon Romanovsky <leon@kernel.org>
+	envelopeSender = Leon Romanovsky <leon@kernel.org>
+	signingkey = leon@kernel.org
 [merge]
 	ff = false
 	log = true
@@ -45,3 +44,8 @@
 	api-token = SECRET_KEY
 	pre-regex = ^v\\d+(\\.\\d+){,2}(-(alpha|beta|rc)\\d+.*)$
 	tag-regex = ^v\\d+(\\.\\d+){,2}$
+[http]
+	postBuffer = 524288000
+[url "https://git.kernel.org"]
+    insteadOf = http://git.kernel.org
+    insteadOf = git://git.kernel.org

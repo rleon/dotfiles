@@ -1,0 +1,12 @@
+#!/bin/bash
+
+branch=$(git symbolic-ref -q --short HEAD)
+if [[ r"$branch" != r"" ]];
+then
+	if [[ "$branch" == m/* ]];
+	then
+		git config gerrit.createChangeId true
+	else
+		git config gerrit.createChangeId false
+	fi
+fi

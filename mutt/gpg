@@ -94,5 +94,6 @@ set pgp_replysign = yes
 set pgp_replysignencrypted = yes
 set pgp_verify_sig = yes
 set pgp_sign_as = 367258a7
-set pgp_timeout = 0
+set pgp_timeout = 3600
 set pgp_auto_decode = yes
+#set pgp_use_gpg_agent = yes

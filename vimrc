@@ -102,5 +102,17 @@ augroup checktime
     endif
 augroup END
 
-" Exti/return to/from shell
+" Exit/return to/from shell
 noremap <C-d> :sh<cr>
+
+" Format line in INSERT mode or buffer in VISUAL mode to clang format
+map <C-F> :pyf /labhome/leonro/.vim/clang-format.py<cr>
+imap <C-F> <c-o>:pyf /labhome/leonro/.vim/clang-format.py<cr>
+
+" Run man directly from VIM
+" Move your cursor over the word grep and hit <leader>K
+runtime! ftplugin/man.vim
+
+" View Markdown with grip
+" Ctrl-p will open file in browser
+let vim_markdown_preview_github=1

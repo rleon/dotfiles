@@ -28,3 +28,5 @@ macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract 
 bind index <Esc><Tab> next-unread-mailbox
 bind pager <Esc><Tab> next-unread-mailbox
 bind pager i exit
+
+macro pager,index \Ca "<pipe-entry> x mutt2git remote<Enter>" "Process patch"

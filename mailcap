@@ -2,7 +2,7 @@
 #text/x-patch;pygmentize -f console -l c %s;copiousoutput
 text/calendar; mutt-ics; copiousoutput
 application/ics; mutt-ics; copiousoutput
-text/html; chromium file://%s;
-text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/html; firefox %s; needsterminal
+text/html; w3m -I %{charset} -T text/html; copiousoutput
 text/plain; view %s ; needsterminal
 text/x-chdr; view %s ; needsterminal

@@ -1,11 +1,12 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export GOPATH=$HOME/go
-export PATH=/usr/lib/ccache/bin:/usr/local/bin/:$HOME/.gem/ruby/2.4.0/bin:$GOPATH/bin:$HOME/src/tools/:$PATH
+export PATH=/usr/lib/ccache/bin:/usr/local/bin/:$GOPATH/bin:/images/src/tools/:$PATH
 
 # https://bbs.archlinux.org/viewtopic.php?pid=1490821#p1490821
-export GPG_TTY=$(tty)
-export GPG_AGENT_INFO=""
+#export GPG_TTY=$(tty)
+#export GPG_AGENT_INFO=""
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 # Path to your oh-my-zsh installation.
 export ZSH=/home/leonro/.oh-my-zsh
 
@@ -56,7 +57,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ccache)
+plugins=(git ccache)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -92,13 +93,12 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #alias tmux="TERM=screen-256color tmux"
-alias tmux="TERM=xterm-256color tmux"
-alias vpn="sudo openconnect --juniper https://ssl-il.mellanox.com --user=leonro --authgroup Mellanox_VIP_Access_App --servercert sha256:cd8bc44a2b2d6d05eecceb80f0ffd43e5d569245a451a6c19e5e47a9d486b687"
-alias mail-sync="while [ 1 ]; do mbsync work; mbsync private; echo 'Going to sleep'; sleep 3m; done"
-alias wmosh="mosh 10.137.198.1"
+#alias tmux="TERM=xterm-256color tmux"
+alias wmosh="mosh 10.137.188.1"
 alias vim="vim -p"
+alias gpg=gpg2
 
-eval $(keychain --eval -Q --quiet id_rsa)
+#eval $(keychain --eval -Q --quiet id_rsa)
 
 # added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+#[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh

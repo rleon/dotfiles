@@ -29,3 +29,9 @@ auto_view text/calendar application/ics
 
 # auto convert text/html MIME type to text/plain
 auto_view text/html
+
+# periodically calculate message statistics of a mailbox
+# while polling for new mail. It will check for unread, flagged,
+# and total message counts
+set mail_check_stats
+set sidebar_format = "%B%* %?N?%N?"
