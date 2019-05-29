@@ -1,12 +1,16 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export GOPATH=$HOME/go
-export PATH=/usr/lib/ccache/bin:/usr/local/bin/:$GOPATH/bin:/images/src/tools/:$PATH
+export PATH=/usr/local/bin/:$GOPATH/bin:/images/src/tools/:$HOME/mkt/:$PATH
 
 # https://bbs.archlinux.org/viewtopic.php?pid=1490821#p1490821
 #export GPG_TTY=$(tty)
 #export GPG_AGENT_INFO=""
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+#export LC_ALL=C
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE="en_US.UTF-8"
 # Path to your oh-my-zsh installation.
 export ZSH=/home/leonro/.oh-my-zsh
 
@@ -57,7 +61,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ccache)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,6 +101,7 @@ export EDITOR='vim'
 alias wmosh="mosh 10.137.188.1"
 alias vim="vim -p"
 alias gpg=gpg2
+alias tmux-restore="tmux attach || { (while ! tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh; do sleep 0.2; done)& tmux;}"
 
 #eval $(keychain --eval -Q --quiet id_rsa)
 
