@@ -1,0 +1,16 @@
+[submodule "vim-dispatch"]
+	path = vim/bundle/vim-dispatch
+	url = git://github.com/tpope/vim-dispatch.git
+[submodule "vim-fetch"]
+	path = vim/bundle/vim-fetch
+	url = https://github.com/kopischke/vim-fetch.git
+[submodule "vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "vim-grepper"]
+	path = vim/bundle/vim-grepper
+	url = https://github.com/mhinz/vim-grepper.git
+[submodule "vim-obsession"]
+	path = vim/bundle/vim-obsession
+	url = git://github.com/tpope/vim-obsession.git
+
