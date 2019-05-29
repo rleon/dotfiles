@@ -9,10 +9,12 @@
 	forceSignAnnotated = true
 [core]
 	editor = vim -p
+	excludesfile = .gitignore
 [push]
 	default = current
 [pull]
 	rebase = true
+	strategy = patience
 [rebase]
 	autoSquash = true
 [include]
