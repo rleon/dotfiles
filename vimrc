@@ -116,3 +116,6 @@ map <F4> :GrepperGit <cword><CR>
 
 " \b will open buffer list
 nnoremap <leader>b :ls<cr>:b<space>
+
+cmap gb Gblame<cr>
+cmap gf read !git fixes<space>
