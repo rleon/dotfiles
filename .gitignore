@@ -1,5 +1,4 @@
 vim/view/*
-vim/bundle/*
 vim/sessions/*
 *.swp
 vim/.netrwhist

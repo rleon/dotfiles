@@ -1,3 +1,5 @@
+" Force to work with python3
+let g:pymode_python = 'python3'
 execute pathogen#infect()
 
 filetype plugin indent on    " required
@@ -106,13 +108,11 @@ augroup END
 noremap <C-d> :sh<cr>
 
 " Format line in INSERT mode or buffer in VISUAL mode to clang format
-map <C-F> :pyf /labhome/leonro/.vim/clang-format.py<cr>
-imap <C-F> <c-o>:pyf /labhome/leonro/.vim/clang-format.py<cr>
+map <C-F> :pyf ~/.vim/clang-format.py<cr>
+imap <C-F> <c-o>:pyf ~/.vim/clang-format.py<cr>
 
-" Run man directly from VIM
-" Move your cursor over the word grep and hit <leader>K
-runtime! ftplugin/man.vim
+" bind F4 to grep word under cursor
+map <F4> :GrepperGit <cword><CR>
 
-" View Markdown with grip
-" Ctrl-p will open file in browser
-let vim_markdown_preview_github=1
+" \b will open buffer list
+nnoremap <leader>b :ls<cr>:b<space>
