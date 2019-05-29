@@ -16,7 +16,7 @@ PassCmd "grep 'machine imap.gmail.com' -A2 $HOME/.netrc | grep password | awk '{
 # RequireSSL yes
 # UseTLSv1 yes
 SSLType IMAPS
-SSLVersions TLSv1.2
+SSLVersions TLSv1.1
 CertificateFile /etc/ssl/certs/ca-bundle.crt
 
 IMAPStore private-remote
@@ -117,7 +117,7 @@ PassCmd "grep 'machine outlook.office365.com' -A2 $HOME/.netrc | grep password |
 # RequireSSL yes
 # UseTLSv1 yes
 SSLType IMAPS
-SSLVersions TLSv1.2
+SSLVersions TLSv1.1
 CertificateFile /etc/ssl/certs/ca-bundle.crt
 
 IMAPStore work-remote
