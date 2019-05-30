@@ -119,3 +119,4 @@ nnoremap <leader>b :ls<cr>:b<space>
 
 cmap gb Gblame<cr>
 cmap gf read !git fixes<space>
+cmap gg GrepperGit<space>
