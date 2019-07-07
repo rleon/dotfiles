@@ -1,5 +1,7 @@
 set header_cache = ~/.cache/mutt
 
+set display_filter="/home/leonro/.mutt/lorifier.py"
+
 ignore *                               # first, ignore all headers
-unignore from: to: cc: date: subject:  # then, show only these
-hdr_order from: to: cc: date: subject: # and in this order
+unignore from: to: cc: date: subject: x-uri message-id # then, show only these
+hdr_order from: to: cc: date: subject: x-uri message-id # and in this order
