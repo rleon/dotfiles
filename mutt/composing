@@ -29,3 +29,6 @@ set forward_quote
 alternates "leon@leon.nu|leon@medkio.com|leon@kernel.org|leonro@mellanox.com"
 set reverse_name = yes
 set reverse_realname = no
+
+set hidden_host = yes
+set hostname = unreal
