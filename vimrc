@@ -119,3 +119,7 @@ nnoremap <leader>b :ls<cr>:b<space>
 
 " \gf will add Fixes line according to linux kernel coding standard
 nnoremap <leader>gf :read !git fixes<space>
+nnoremap <leader>gb :Gblame<CR>
+
+" Enable vim-easygit
+let g:easygit_enable_command = 1
