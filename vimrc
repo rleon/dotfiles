@@ -117,6 +117,5 @@ map <F4> :GrepperGit <cword><CR>
 " \b will open buffer list
 nnoremap <leader>b :ls<cr>:b<space>
 
-cmap gb Gblame
-cmap gf read !git fixes
-cmap gg GrepperGit
+" \gf will add Fixes line according to linux kernel coding standard
+nnoremap <leader>gf :read !git fixes<space>
