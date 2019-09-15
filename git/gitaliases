@@ -10,6 +10,7 @@
 	pl = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --abbrev=12
 	fixes = "!git --no-pager log --abbrev=12 -1 --format='Fixes: %h (\"%s\")'"
 	fixup = commit -s --fixup
+	rfix = "!f() { git fixup $1 && git rf $1;};f"
 	up = add --update
 	l = log --oneline
 	send-internal = "!git sp work && git send-email --to=linux-internal@mellanox.com"
@@ -17,36 +18,14 @@
 	dirt = config gerrit.createChangeId true
 	undirt = config gerrit.createChangeId false
 	undo = reset --hard
-	build-next = "!git co queue-next && git remote update saeed && git undo saeed/net-next &&  git merge --no-ff --no-edit testing/rdma-next"
-	build-rc = "!git co queue-rc && git remote update saeed && git undo saeed/net-rc && git merge --no-ff --no-edit testing/rdma-rc"
-	build-testing = "!git fetch rdma && git co testing/rdma-rc && git undo rdma-rc && git merge --no-edit master && \
-			  git co testing/rdma-next && git undo testing/rdma-rc && \
-			  git merge --no-edit rdma-next && git build-rc && git build-next"
-	upload = "!git fetch linus --tags --force && \
-		  git fetch rdma --tags --force && \
-		  git fetch s --tags --force && \
-		  git co master && git undo s/master && \
-		  git push -f origin s/rdma-next:rdma-next s/rdma-rc:rdma-rc \
-		  s/testing/rdma-next:testing/rdma-next \
-		  s/testing/rdma-rc:testing/rdma-rc \
-		  s/master:master mlx-next mlx-rc && \
-		  git push -f ml s/master:master \
-		  s/queue-next:queue-next s/queue-rc:queue-rc && \
-		  git push ml s/mlx5-next:mlx5-next"
 	reword = commit --amend --allow-empty
 	update = "!git reword --no-edit"
 	rgrep = "!f() { git grep $1 drivers/infiniband/ include/rdma/ include/uapi/rdma/;};f"
-	jgg-rc = rebase --onto remotes/rdma/wip/jgg-for-rc --root rdma-rc
-	jgg-next = rebase --onto remotes/rdma/wip/jgg-for-next --root rdma-next
-	dl-rc = rebase --onto remotes/rdma/wip/dl-for-rc --root rdma-rc
-	dl-next = rebase --onto remotes/rdma/wip/dl-for-next --root rdma-next
 	numstat = log -M --oneline --numstat --no-merges
 	count = rev-list --count --no-merges
 	cumulutive = diff -M --dirstat=2,cumulative
 	mcp = "!f() { git cherry-pick $1 && x clean;};f"
 	rcp = "!f() { git cherry-pick $1 && x by rob $2;};f"
-	tag-next = tag -f mlx-next
-	tag-rc = tag -f mlx-rc
 	stat = shortlog --no-merges -e -s -n
 	# Find merge commit which include specific commit
 	find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
