@@ -124,3 +124,4 @@ let g:easygit_enable_command = 1
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nmap <leader>gt <Plug>(git-time-lapse)
+nnoremap <leader>gd :GdiffThis HEAD<CR>
