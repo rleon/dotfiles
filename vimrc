@@ -6,6 +6,9 @@ filetype plugin indent on    " required
 " Set indentation settings for python scripts
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
 set number
 set hlsearch
 syntax on
