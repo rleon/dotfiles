@@ -111,8 +111,8 @@ augroup END
 noremap <C-d> :sh<cr>
 
 " Format line in INSERT mode or buffer in VISUAL mode to clang format
-map <C-F> :pyf ~/.vim/clang-format.py<cr>
-imap <C-F> <c-o>:pyf ~/.vim/clang-format.py<cr>
+map <C-F> :py3f ~/.vim/clang-format.py<cr>
+imap <C-F> <c-o>:py3f ~/.vim/clang-format.py<cr>
 
 " bind F4 to grep word under cursor
 map <F4> :GrepperGit <cword><CR>
