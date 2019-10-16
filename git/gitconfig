@@ -17,8 +17,6 @@
 	strategy = patience
 [rebase]
 	autoSquash = true
-[am]
-	messageid = true
 [include]
 	path = .gitaliases
 [format]
