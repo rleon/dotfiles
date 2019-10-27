@@ -128,3 +128,7 @@ nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nmap <leader>gt <Plug>(git-time-lapse)
 nnoremap <leader>gd :GdiffThis HEAD<CR>
+
+" vim-dispatch
+nnoremap <leader>mb :Dispatch mkt build<CR>
+nnoremap <leader>mc :Dispatch mkt ci<CR>
