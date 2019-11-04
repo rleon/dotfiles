@@ -13,4 +13,3 @@ source ~/.mutt/aliases          # Address book
 source ~/.mutt/options          # Options.
 source ~/.mutt/gpg		# GPG
 source ~/.mutt/colors		# Colors
-source ~/.mutt/colors-arch	# Colors
