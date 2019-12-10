@@ -141,25 +141,21 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
 " Toggle Vexplore with F2
-function! ToggleVExplorer()
-    if exists("t:expl_buf_num")
-        let expl_win_num = bufwinnr(t:expl_buf_num)
-        let cur_win_num = winnr()
-
-        if expl_win_num != -1
-            while expl_win_num != cur_win_num
-                exec "wincmd w"
-                let cur_win_num = winnr()
-            endwhile
-
-            close
+let g:NetrwIsOpen=0
+function! ToggleNetrw()
+        if g:NetrwIsOpen
+                let i = bufnr("$")
+                while (i >= 1)
+                        if (getbufvar(i, "&filetype") == "netrw")
+                                silent exe "bwipeout " . i
+                        endif
+                        let i-=1
+                endwhile
+                let g:NetrwIsOpen=0
+        else
+                let g:NetrwIsOpen=1
+                silent Lexplore
         endif
-
-        unlet t:expl_buf_num
-    else
-         Vexplore
-         let t:expl_buf_num = bufnr("%")
-    endif
 endfunction
 
-map <silent> <f2> :call ToggleVExplorer()<CR>
+map <silent> <f2> :call ToggleNetrw()<CR>
