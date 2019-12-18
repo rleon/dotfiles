@@ -74,13 +74,13 @@ Channel private-netdev
 Master ":private-remote:ml-kernel-netdev"
 Slave ":private-local:ml-kernel-netdev"
 
-Channel private-drafts
-Master ":private-remote:[Gmail]/Drafts"
-Slave ":private-local:drafts"
+#Channel private-drafts
+#Master ":private-remote:[Gmail]/Drafts"
+#Slave ":private-local:drafts"
 
-Channel private-sent
-Master ":private-remote:[Gmail]/Sent Mail"
-Slave ":private-local:sent"
+#Channel private-sent
+#Master ":private-remote:[Gmail]/Sent Mail"
+#Slave ":private-local:sent"
 
 #Channel private-trash
 #Master ":private-remote:[Gmail]/Trash"
@@ -100,8 +100,8 @@ Channel private-korg
 Channel private-ksummit
 #Channel private-netdev-mlnx
 Channel private-netdev
-Channel private-drafts
-Channel private-sent
+#Channel private-drafts
+#Channel private-sent
 #Channel private-trash
 
 # leonro@mellanox.com
@@ -127,20 +127,20 @@ Channel work-inbox
 Master ":work-remote:INBOX"
 Slave ":work-local:INBOX"
 
-Channel work-sent
-Master ":work-remote:Sent Items"
-Slave ":work-local:sent"
+#Channel work-sent
+#Master ":work-remote:Sent Items"
+#Slave ":work-local:sent"
 
-Channel work-trash
-Master ":work-remote:Deleted Items"
-Slave ":work-local:trash"
+#Channel work-trash
+#Master ":work-remote:Deleted Items"
+#Slave ":work-local:trash"
 
-Channel work-drafts
-Master ":work-remote:Drafts"
-Slave ":work-local:drafts"
+#Channel work-drafts
+#Master ":work-remote:Drafts"
+#Slave ":work-local:drafts"
 
 Group work
 Channel work-inbox
-Channel work-sent
-Channel work-trash
-Channel work-drafts
+#Channel work-sent
+#Channel work-trash
+#Channel work-drafts
