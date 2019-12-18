@@ -34,4 +34,7 @@ auto_view text/html
 # while polling for new mail. It will check for unread, flagged,
 # and total message counts
 set mail_check_stats
-set sidebar_format = "%B%* %?N?%N?"
+#set sidebar_format = "%B%* %?N?%N?"
+set sidebar_format = "%B%* %N/%S"
+
+#set allow_ansi
