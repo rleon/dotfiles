@@ -161,7 +161,7 @@ endfunction
 map <silent> <f2> :call ToggleNetrw()<CR>
 
 let g:wordy#ring = [
-\  ['weasel', 'passive-voice', 'being', 'problematic', 'redundant', 'weak'],
+\  ['weasel'], ['passive-voice'], ['being', 'problematic'], ['redundant', 'weak'],
 \  ]
 
 map <silent> <f5> :NextWordy<CR>
