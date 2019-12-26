@@ -130,8 +130,8 @@ nmap <leader>gt <Plug>(git-time-lapse)
 nnoremap <leader>gd :GdiffThis HEAD<CR>
 
 " vim-dispatch
-nnoremap <leader>mb :Dispatch mkt build<CR>
-nnoremap <leader>mc :Dispatch mkt ci<CR>
+map <silent> <f9> :Dispatch mkt build<CR>
+map <silent> <f10> :Dispatch mkt ci<CR>
 
 " Configure netrw to behave like NERDtree
 let g:netrw_banner = 0
