@@ -165,3 +165,6 @@ let g:wordy#ring = [
 \  ]
 
 map <silent> <f5> :NextWordy<CR>
+
+" put all splits below, mainly for terminal
+set splitbelow
