@@ -102,8 +102,7 @@ alias wmosh="mosh 10.137.188.1"
 alias vim="vim -p"
 alias gpg=gpg2
 alias tmux-restore="tmux attach || { (while ! tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh; do sleep 0.2; done)& tmux;}"
+alias sync-server="sudo docker run --rm --init -it -u $(id -u):$(id -g) -v /images/leonro/src/:/data -p 49172:49172 quay.io/stephenh/mirror server"
+alias sync-client="sudo docker run --rm --init -it -u $(id -u):$(id -g) -v /images/leonro/src/:/data quay.io/stephenh/mirror client --local-root /data --remote-root /data --include '*' --host 10.137.188.1"
 
 #eval $(keychain --eval -Q --quiet id_rsa)
-
-# added by travis gem
-#[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
