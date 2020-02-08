@@ -7,9 +7,6 @@
 [submodule "vim-grepper"]
 	path = vim/bundle/vim-grepper
 	url = https://github.com/mhinz/vim-grepper.git
-[submodule "vim-obsession"]
-	path = vim/bundle/vim-obsession
-	url = git://github.com/tpope/vim-obsession.git
 [submodule "vim-easygit"]
 	path = vim/bundle/vim-easygit
 	url = https://github.com/neoclide/vim-easygit.git
