@@ -12,9 +12,6 @@ IMAPAccount private
 Host imap.gmail.com
 User leon@leon.nu
 PassCmd "grep 'machine imap.gmail.com' -A2 $HOME/.netrc | grep password | awk '{print $2}'"
-# UseIMAPS yes
-# RequireSSL yes
-# UseTLSv1 yes
 SSLType IMAPS
 SSLVersions TLSv1.1
 CertificateFile /etc/ssl/certs/ca-bundle.crt
@@ -54,10 +51,6 @@ Channel private-newbies
 Master ":private-remote:ml-kernel-newbies"
 Slave ":private-local:ml-kernel-newbies"
 
-#Channel private-nvme
-#Master ":private-remote:ml-kernel-nvme"
-#Slave ":private-local:ml-kernel-nvme"
-
 Channel private-korg
 Master ":private-remote:ml-kernel-org"
 Slave ":private-local:ml-kernel-org"
@@ -66,25 +59,9 @@ Channel private-ksummit
 Master ":private-remote:ml-kernel-summit"
 Slave ":private-local:ml-kernel-summit"
 
-#Channel private-netdev-mlnx
-#Master ":private-remote:netdev-mlnx"
-#Slave ":private-local:netdev-mlnx"
-
 Channel private-netdev
 Master ":private-remote:ml-kernel-netdev"
 Slave ":private-local:ml-kernel-netdev"
-
-#Channel private-drafts
-#Master ":private-remote:[Gmail]/Drafts"
-#Slave ":private-local:drafts"
-
-#Channel private-sent
-#Master ":private-remote:[Gmail]/Sent Mail"
-#Slave ":private-local:sent"
-
-#Channel private-trash
-#Master ":private-remote:[Gmail]/Trash"
-#Slave ":private-local:trash"
 
 Group private
 Channel private-inbox
@@ -95,14 +72,9 @@ Channel private-haifux
 Channel private-mentors
 Channel private-mm
 Channel private-newbies
-#Channel private-nvme
 Channel private-korg
 Channel private-ksummit
-#Channel private-netdev-mlnx
 Channel private-netdev
-#Channel private-drafts
-#Channel private-sent
-#Channel private-trash
 
 # leonro@mellanox.com
 MaildirStore work-local
@@ -113,9 +85,6 @@ IMAPAccount work
 Host outlook.office365.com
 User leonro@mellanox.com
 PassCmd "grep 'machine outlook.office365.com' -A2 $HOME/.netrc | grep password | awk '{print $2}'"
-# UseIMAPS yes
-# RequireSSL yes
-# UseTLSv1 yes
 SSLType IMAPS
 SSLVersions TLSv1.1
 CertificateFile /etc/ssl/certs/ca-bundle.crt
@@ -127,20 +96,5 @@ Channel work-inbox
 Master ":work-remote:INBOX"
 Slave ":work-local:INBOX"
 
-#Channel work-sent
-#Master ":work-remote:Sent Items"
-#Slave ":work-local:sent"
-
-#Channel work-trash
-#Master ":work-remote:Deleted Items"
-#Slave ":work-local:trash"
-
-#Channel work-drafts
-#Master ":work-remote:Drafts"
-#Slave ":work-local:drafts"
-
 Group work
 Channel work-inbox
-#Channel work-sent
-#Channel work-trash
-#Channel work-drafts
