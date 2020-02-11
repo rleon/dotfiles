@@ -107,6 +107,15 @@ augroup checktime
     endif
 augroup END
 
+" Enable vim-easygit
+let g:easygit_enable_command = 1
+let g:wordy#ring = [
+\  ['weasel'], ['passive-voice'], ['being', 'problematic'], ['redundant', 'weak'],
+\  ]
+
+" put all splits below, mainly for terminal
+set splitbelow
+
 " Exit/return to/from shell
 noremap <C-d> :sh<cr>
 
@@ -114,57 +123,18 @@ noremap <C-d> :sh<cr>
 map <C-F> :py3f ~/.vim/clang-format.py<cr>
 imap <C-F> <c-o>:py3f ~/.vim/clang-format.py<cr>
 
-" bind F4 to grep word under cursor
-map <F4> :GrepperGit <cword><CR>
-
-" \b will open buffer list
-nnoremap <leader>b :ls<cr>:b<space>
+" bind F1 to grep word under cursor
+map <silent> <F1> :GrepperGit <cword><CR>
+map <F2> :GrepperGit<space>
+map <silent> <F3> :Gblame<CR>
+" open buffer list
+map <silent> <F4> :ls<cr>:b<space>
+map <silent> <F5> :Dispatch mkt build<CR>
+map <silent> <F6> :Dispatch mkt ci<CR>
+map <silent> <F9> :ccl<CR>
+map <silent> <F12> :NextWordy<CR>
 
 " \gf will add Fixes line according to linux kernel coding standard
 nnoremap <leader>gf :read !git fixes<space>
-" Enable vim-easygit
-let g:easygit_enable_command = 1
-nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gs :Gstatus<CR>
-nmap <leader>gt <Plug>(git-time-lapse)
 nnoremap <leader>gd :GdiffThis HEAD<CR>
-
-" vim-dispatch
-map <silent> <f9> :Dispatch mkt build<CR>
-map <silent> <f10> :Dispatch mkt ci<CR>
-
-" Configure netrw to behave like NERDtree
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-
-" Toggle Vexplore with F2
-let g:NetrwIsOpen=0
-function! ToggleNetrw()
-        if g:NetrwIsOpen
-                let i = bufnr("$")
-                while (i >= 1)
-                        if (getbufvar(i, "&filetype") == "netrw")
-                                silent exe "bwipeout " . i
-                        endif
-                        let i-=1
-                endwhile
-                let g:NetrwIsOpen=0
-        else
-                let g:NetrwIsOpen=1
-                silent Lexplore
-        endif
-endfunction
-
-map <silent> <f2> :call ToggleNetrw()<CR>
-
-let g:wordy#ring = [
-\  ['weasel'], ['passive-voice'], ['being', 'problematic'], ['redundant', 'weak'],
-\  ]
-
-map <silent> <f5> :NextWordy<CR>
-
-" put all splits below, mainly for terminal
-set splitbelow
