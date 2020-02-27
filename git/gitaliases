@@ -7,14 +7,11 @@
 	c = commit -s
 	fp = format-patch -M --notes
 	grpe = grep
-	pl = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --abbrev=12
 	fixes = "!git --no-pager log --abbrev=12 -1 --format='Fixes: %h (\"%s\")'"
 	fixup = commit -s --fixup
-	rfix = "!f() { git fixup $1 && git rf $1;};f"
 	up = add --update
 	l = log --oneline
-	send-internal = "!git sp work && git send-email --to=linux-internal@mellanox.com"
-	send-upstream = send-email --suppress-cc=bodycc
+	send-upstream = send-email --suppress-cc=bodycc --suppress-from --no-signed-off-cc
 	dirt = config gerrit.createChangeId true
 	undirt = config gerrit.createChangeId false
 	undo = reset --hard

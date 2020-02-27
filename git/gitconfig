@@ -28,9 +28,6 @@
 [sendemail]
 	smtpserver = /usr/local/bin/msmtp-enqueue.sh
 	suppresscc = self
-	signedoffbycc = true
-	cccover = true
-	tocover = true
 	chainReplyTo = false
 	confirm = always
 	from = Leon Romanovsky <leon@kernel.org>
