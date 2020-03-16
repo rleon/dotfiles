@@ -29,4 +29,10 @@ bind index <Esc><Tab> next-unread-mailbox
 bind pager <Esc><Tab> next-unread-mailbox
 bind pager i exit
 
-macro pager,index \Ca "<pipe-entry> x mutt2git local<Enter>" "Process patch"
+macro pager,index \ca "<pipe-message> x mutt2git local<Enter>" "Process patch"
+
+# Don't show the "Press any key to continue..." message
+set wait_key=no
+macro index,pager <F1> "<pipe-message> w3m -I %{charset} -T text/plain | \
+	grep X-Gerrit-ChangeURL | cut -c 22- | cut -f 1 -d '\' | cut -f 1 -d '>' |\
+	xargs firefox -url<Enter>" "open web page"
