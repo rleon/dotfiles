@@ -124,11 +124,11 @@ map <C-F> :py3f ~/.vim/clang-format.py<cr>
 imap <C-F> <c-o>:py3f ~/.vim/clang-format.py<cr>
 
 " bind F1 to grep word under cursor
-map <silent> <F1> :GrepperGit <cword><CR>
-map <F2> :GrepperGit<space>
-map <silent> <F3> :Gblame<CR>
+map <silent> <F1> :Gblame<CR>
+map <F3> :GrepperGit<space>
+map <silent> <F4> :GrepperGit <cword><CR>
 " open buffer list
-map <silent> <F4> :ls<cr>:b<space>
+" map <silent> <F4> :ls<cr>:b<space>
 map <silent> <F5> :Dispatch mkt build<CR>
 map <silent> <F6> :Dispatch mkt ci<CR>
 map <silent> <F9> :ccl<CR>
