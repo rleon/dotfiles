@@ -2,11 +2,27 @@
 
 [ $# -ge 1 -a -f "$1" ] && input="$1" || input="-"
 
-LINE=$(cat $input | grep -e X-Redmine-Issue-Id -e X-Gerrit-ChangeURL -m 1)
-URL=$(echo $LINE | grep X-Gerrit-ChangeURL -m 1 | cut -c 22- | cut -f 1 -d '\' | cut -f 1 -d '>')
-if [[ r"$URL" == r"" ]]; then
-	URL=$(echo $LINE | grep X-Redmine-Issue-Id -m 1 | cut -c 21- )
-	URL="https://redmine.mellanox.com/issues/"$URL
+LINE=$(cat $input | urlscan -n -d | grep -e redmine -e gerrit -e job | grep -v setting)
+# If email contains job, we will look on it first, because we are interested
+# to see results of that job and not the change itself
+URL=$(echo "$LINE" | grep job)
+if [[ r"$URL" != r"" ]]; then
+	echo $URL
+	exit
 fi
 
-echo $URL
+# We are happy owner of new bug
+URL=$(echo "$LINE" | grep redmine | grep issues -m 1 )
+if [[ r"$URL" != r"" ]]; then
+	echo $URL
+	exit
+fi
+
+# We were asked to perform review, let's check it
+URL=$(echo "$LINE" | grep gerrit -m 1)
+if [[ r"$URL" != r"" ]]; then
+	echo $URL
+	exit
+fi
+
+exit
