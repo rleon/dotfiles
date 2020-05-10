@@ -83,11 +83,15 @@ augroup filetypedetect
 augroup END
 
 " Set mutt specific configurations
- " Add Reviewed-by tag and delete rest of the email
+" Add Reviewed-by tag and delete rest of the email
 function! RBtag()
 	r~/.vim/mutt/rb-tag.txt
 endfunction
-autocmd FileType mail nmap rt :call RBtag()<CR>2j<CR>dG<CR>
+function! ABtag()
+	r~/.vim/mutt/ab-tag.txt
+endfunction
+autocmd FileType mail nmap <F2> :call RBtag()<CR>2j<CR>dG<CR>
+autocmd FileType mail nmap <F3> :call ABtag()<CR>2j<CR>dG<CR>
 " To limit the width of text to 72 character for mutt
 autocmd FileType mail setlocal tw=72
 
