@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export GOPATH=$HOME/go
-export PATH=/usr/local/bin/:$GOPATH/bin:/images/src/tools/:$HOME/mkt/:$PATH
+export GOPATH=/images/leonro/
+export PATH=/usr/local/bin/:/images/src/tools/:$HOME/mkt/:/images/leonro/src/git-tools/:$PATH
 
 # https://bbs.archlinux.org/viewtopic.php?pid=1490821#p1490821
 #export GPG_TTY=$(tty)
@@ -98,7 +98,7 @@ export EDITOR='vim'
 
 #alias tmux="TERM=screen-256color tmux"
 #alias tmux="TERM=xterm-256color tmux"
-alias wmosh="mosh 10.137.188.1"
+alias wmosh="mosh 10.237.188.1"
 alias vim="vim -p"
 alias gpg=gpg2
 alias tmux-restore="tmux attach || { (while ! tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh; do sleep 0.2; done)& tmux;}"
