@@ -2,3 +2,4 @@ vim/view/*
 vim/sessions/*
 *.swp
 vim/.netrwhist
+mutt/aliases
