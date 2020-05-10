@@ -33,6 +33,7 @@
 	from = Leon Romanovsky <leon@kernel.org>
 	envelopeSender = Leon Romanovsky <leon@kernel.org>
 	signingkey = leon@kernel.org
+	composeencoding = utf-8
 [merge]
 	ff = false
 	log = true
