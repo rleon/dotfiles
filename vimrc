@@ -77,18 +77,19 @@ set switchbuf+=usetab,newtab
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd BufWritePre * %s/\s\+$//e
 
-" To limit the width of text to 72 character for mutt
-" au BufRead /tmp/mutt-* set tw=72
-
 augroup filetypedetect
 	 " Mail
 	autocmd BufRead,BufNewFile *mutt-* setfiletype mail
-	 " Add Reviewed-by tag and delete rest of the email
-	function! RBtag()
-		r~/.vim/mutt/rb-tag.txt
-	endfunction
-	nmap rt :call RBtag()<CR>2j<CR>dG<CR>
 augroup END
+
+" Set mutt specific configurations
+ " Add Reviewed-by tag and delete rest of the email
+function! RBtag()
+	r~/.vim/mutt/rb-tag.txt
+endfunction
+autocmd FileType mail nmap rt :call RBtag()<CR>2j<CR>dG<CR>
+" To limit the width of text to 72 character for mutt
+autocmd FileType mail setlocal tw=72
 
 " Autoread works in gVIM only, but little help is needed for VIM.
 " https://stackoverflow.com/questions/2490227/how-does-vims-autoread-work
