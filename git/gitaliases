@@ -17,6 +17,7 @@
 	undo = reset --hard
 	reword = commit --amend --allow-empty
 	update = "!git reword --no-edit"
+	upfix = "!git up && git update && x checkpatch"
 	rgrep = "!f() { git grep $1 drivers/infiniband/ include/rdma/ include/uapi/rdma/;};f"
 	numstat = log -M --oneline --numstat --no-merges
 	count = rev-list --count --no-merges
