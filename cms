@@ -1,0 +1,2 @@
+MailDir("~/mail/nvmail/INBOX")
+Office365("inbox", Office365_Account(user="leonro@nvidia.com"))
