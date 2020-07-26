@@ -1,7 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export GOPATH=/images/leonro/
-export PATH=/usr/local/bin/:/images/src/tools/:$HOME/mkt/:/images/leonro/src/git-tools/:$PATH
+export PATH=$HOME/mkt/:$HOME/src/git-tools/:$PATH
 
 # https://bbs.archlinux.org/viewtopic.php?pid=1490821#p1490821
 #export GPG_TTY=$(tty)
@@ -96,13 +95,32 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-#alias tmux="TERM=screen-256color tmux"
-#alias tmux="TERM=xterm-256color tmux"
 alias wmosh="mosh 10.237.188.1"
 alias vim="vim -p"
 alias gpg=gpg2
-alias tmux-restore="tmux attach || { (while ! tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh; do sleep 0.2; done)& tmux;}"
-alias sync-server="sudo docker run --rm --init -it -u $(id -u):$(id -g) -v /images/leonro/src/:/data -p 49172:49172 quay.io/stephenh/mirror server"
-alias sync-client="sudo docker run --rm --init -it -u $(id -u):$(id -g) -v /images/leonro/src/:/data quay.io/stephenh/mirror client --local-root /data --remote-root /data --include '*' --host 10.137.188.1"
 
-#eval $(keychain --eval -Q --quiet id_rsa)
+mirror() {
+	local FROM="$HOME/src"
+	local TO="/swgwork/leonro/src"
+	local RSYNC_BIN="/swgwork/leonro/bin/rsync"
+	for D in $FROM/*; do
+		if [ -d "${D}" ]; then
+			local DIR=$(basename ${D})
+			echo "$DIR:"
+			if [ -d "${D}/.git" ]; then
+				ssh $1 "mkdir -p $TO/$DIR/"
+				ssh $1 "[ ! -d $TO/$DIR/.git/ ] && git init $TO/$DIR"
+				rsync ${D}/.git/config $1:$TO/$DIR/.git/config
+				pushd -q ${D}
+				git push --mirror "leonro@$1:$TO/$DIR"
+				popd -q
+				ssh $1 "nohup cd $TO/$DIR/ && git reset --hard HEAD < /dev/null >/dev/null 2>&1 &"
+			else
+				rsync -amz --no-o --no-g --no-p \
+				--info=progress2 --inplace --force \
+				--delete --delete-excluded ${D} $1:$TO \
+				--rsync-path=$RSYNC_BIN --chown=leonro:mtl;
+			fi
+		    fi
+	done
+}
