@@ -1,0 +1,2 @@
+exclude,p *.o
+exclude,p *.ko

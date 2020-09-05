@@ -114,7 +114,7 @@ mirror() {
 				pushd -q ${D}
 				git push --mirror "leonro@$1:$TO/$DIR"
 				popd -q
-				ssh $1 "nohup cd $TO/$DIR/ && git reset --hard HEAD < /dev/null >/dev/null 2>&1 &"
+				ssh $1 "nohup cd $TO/$DIR/ && git reset --hard HEAD && git clean -f -d < /dev/null >/dev/null 2>&1 &"
 			else
 				rsync -amz --no-o --no-g --no-p \
 				--info=progress2 --inplace --force \
