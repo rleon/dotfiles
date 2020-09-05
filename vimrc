@@ -178,3 +178,13 @@ if exists('*complete_info')
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
+
+" Remap :W to be :w and :Q to be :q
+" https://stackoverflow.com/a/3879737
+fun! SetupCommandAlias(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfun
+call SetupCommandAlias("W","w")
+call SetupCommandAlias("Q","q")
