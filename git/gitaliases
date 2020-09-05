@@ -17,15 +17,16 @@
 	undo = reset --hard
 	reword = commit --amend --allow-empty
 	update = "!git reword --no-edit"
-	upfix = "!git up && git update && x checkpatch"
+	upfix = "!git up && git update && git checkpatch"
 	rgrep = "!f() { git grep $1 drivers/infiniband/ include/rdma/ include/uapi/rdma/;};f"
 	numstat = log -M --oneline --numstat --no-merges
 	count = rev-list --count --no-merges
 	cumulutive = diff -M --dirstat=2,cumulative
-	mcp = "!f() { git cherry-pick $1 && x clean;};f"
 	rcp = "!f() { git cherry-pick $1 && x by rob $2;};f"
 	stat = shortlog --no-merges -e -s -n
 	# Find merge commit which include specific commit
 	find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
 	# See the details of merge commit returned by find-merge
 	show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
+	# Find root of source directory
+	root = rev-parse --show-toplevel

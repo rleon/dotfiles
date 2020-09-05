@@ -1,7 +1,7 @@
 [user]
 	author = Leon Romanovsky
 	name = Leon Romanovsky
-	email = leonro@mellanox.com
+	email = leonro@nvidia.com
 	signingKey = 921AFFAF83A9D7FD38CAA681E4637B88367258A7
 [gpg]
 	program = gpg2
