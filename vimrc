@@ -133,6 +133,9 @@ imap <C-F> <c-o>:py3f ~/.vim/clang-format.py<cr>
 
 " bind F1 to grep word under cursor
 map <silent> <F1> :Gblame<CR>
+"FZF over files
+nnoremap <silent> <F2> :Files<CR>
+
 map <F3> :GrepperGit<space>
 map <silent> <F4> :GrepperGit <cword><CR>
 " open buffer list
