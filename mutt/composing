@@ -26,7 +26,7 @@ set forward_format = "Fwd: %s"
 set include
 set forward_quote
 
-alternates "leon@leon.nu|leon@medkio.com|leon@kernel.org|leonro@mellanox.com"
+alternates "leon@leon.nu|leon@medkio.com|leon@kernel.org|leonro@mellanox.com|leonro@nvidia.com"
 set reverse_name = yes
 set reverse_realname = no
 

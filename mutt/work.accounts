@@ -2,6 +2,6 @@ set spoolfile   = "+work/INBOX"
 set postponed   = "+work/drafts"
 set record    	= "+work/sent"
 
-set from      	= "leonro@mellanox.com"
+set from      	= "leonro@nvidia.com"
 set pgp_autosign = no
-set maildir_trash = no
+set maildir_trash = yes

@@ -10,7 +10,6 @@ set imap_check_subscribed=yes
 color sidebar_new yellow default
 
 mailboxes "work/INBOX"
-mailboxes "nvmail/INBOX"
 mailboxes "private/ml-kernel-rdma"
 mailboxes "private/INBOX"
 mailboxes "private/ml-kernel-netdev"

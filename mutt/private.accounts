@@ -4,4 +4,4 @@ set record    	= "+private/sent"
 
 set from      	= "leon@leon.nu"
 set pgp_autosign = no
-set maildir_trash = no
+set maildir_trash = yes
