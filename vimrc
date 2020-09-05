@@ -19,7 +19,10 @@ let g:rehash256 = 1
 
 " Enable word spellchecking
 " set spell spelllang=en_us
-setlocal spell spelllang=en_us
+set spelllang=en_us
+autocmd FileType markdown setlocal spell
+autocmd FileType gitcommit setlocal spell
+autocmd FileType mail setlocal spell
 
 " Always show at least 3 lines below the cusrsor
 set scrolloff=3
