@@ -1,4 +1,4 @@
 
 Thanks,
-Reviewed-by: Leon Romanovsky <leonro@mellanox.com>
+Reviewed-by: Leon Romanovsky <leonro@nvidia.com>
 
