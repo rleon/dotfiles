@@ -5,6 +5,8 @@ FILE="/tmp/grammarly.txt"
 
 if [ "$TYPE" == "commit" ]; then
 	sed -i "/^# */Id" $FILE
+	sed -i "/^Issue: */Id" $FILE
+	sed -i "/^Change-Id: */Id" $FILE
 fi
 if [ "$TYPE" == "patch" ]; then
 	sed -i '1d' $FILE
