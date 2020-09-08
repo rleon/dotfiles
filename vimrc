@@ -140,8 +140,7 @@ map <F3> :GrepperGit<space>
 map <silent> <F4> :GrepperGit <cword><CR>
 " open buffer list
 " map <silent> <F4> :ls<cr>:b<space>
-autocmd FileType gitcommit nmap <F5> :w! /tmp/grammarly.txt <bar> :silent exec "!~/.vim/grammarly commit &" <bar> :redraw!<CR>
-autocmd FileType gitsendemail nmap <F5> :w! /tmp/grammarly.txt <bar> :silent exec "!~/.vim/grammarly patch &" <bar> :redraw!<CR>
+map <F5> :py3f ~/.vim/grammarly.py<cr>
 
 map <silent> <F9> :ccl<CR>
 map <silent> <F12> :NextWordy<CR>
