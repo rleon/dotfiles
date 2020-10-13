@@ -103,6 +103,7 @@ mirror() {
 	local FROM="$HOME/src"
 	local TO="/swgwork/leonro/src"
 	local RSYNC_BIN="/swgwork/leonro/bin/rsync"
+	local BASE_DIR=$(pwd)
 	for D in $FROM/*; do
 		if [ -d "${D}" ]; then
 			local DIR=$(basename ${D})
@@ -123,4 +124,5 @@ mirror() {
 			fi
 		    fi
 	done
+	cd $BASE_DIR
 }
