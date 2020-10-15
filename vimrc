@@ -150,6 +150,15 @@ nnoremap <leader>gf :read !git fixes<space>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gd :GdiffThis HEAD<CR>
 
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
 " COC configurations
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
