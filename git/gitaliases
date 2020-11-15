@@ -9,6 +9,7 @@
 	grpe = grep
 	fixes = "!git --no-pager log --abbrev=12 -1 --format='Fixes: %h (\"%s\")'"
 	fixup = commit -s --fixup
+	rfixup = "!f() { git fixup $1 && git rf $1;};f"
 	up = add --update
 	l = log --oneline
 	send-upstream = send-email --suppress-cc=bodycc --suppress-from --no-signed-off-cc
@@ -30,3 +31,4 @@
 	show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
 	# Find root of source directory
 	root = rev-parse --show-toplevel
+	gp = "!f() { git cherry-pick $1 && git cl && git checkpatch ;};f"
