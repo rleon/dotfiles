@@ -117,9 +117,6 @@ augroup END
 
 " Enable vim-easygit
 let g:easygit_enable_command = 1
-let g:wordy#ring = [
-			\  ['weasel'], ['passive-voice'], ['being', 'problematic'], ['redundant', 'weak'],
-			\  ]
 
 " put all splits below, mainly for terminal
 set splitbelow
@@ -143,7 +140,6 @@ map <silent> <F4> :GrepperGit <cword><CR>
 map <F5> :py3f ~/.vim/grammarly.py<cr>
 
 map <silent> <F9> :ccl<CR>
-map <silent> <F12> :NextWordy<CR>
 
 " \gf will add Fixes line according to linux kernel coding standard
 nnoremap <leader>gf :read !git fixes<space>
