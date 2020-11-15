@@ -30,47 +30,47 @@ set scrolloff=3
 " Rename tabs to show tab number.
 " (Based on http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
 if exists("+showtabline")
-    function! MyTabLine()
-        let s = ''
-        let wn = ''
-        let t = tabpagenr()
-        let i = 1
-        while i <= tabpagenr('$')
-            let buflist = tabpagebuflist(i)
-            let winnr = tabpagewinnr(i)
-            let s .= '%' . i . 'T'
-            let s .= (i == t ? '%1*' : '%2*')
-            let s .= ' '
-            let wn = tabpagewinnr(i,'$')
+	function! MyTabLine()
+		let s = ''
+		let wn = ''
+		let t = tabpagenr()
+		let i = 1
+		while i <= tabpagenr('$')
+			let buflist = tabpagebuflist(i)
+			let winnr = tabpagewinnr(i)
+			let s .= '%' . i . 'T'
+			let s .= (i == t ? '%1*' : '%2*')
+			let s .= ' '
+			let wn = tabpagewinnr(i,'$')
 
-            let s .= '%#TabNum#'
-            let s .= i
-            " let s .= '%*'
-            let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
-            let bufnr = buflist[winnr - 1]
-            let file = bufname(bufnr)
-            let buftype = getbufvar(bufnr, 'buftype')
-            if buftype == 'nofile'
-                if file =~ '\/.'
-                    let file = substitute(file, '.*\/\ze.', '', '')
-                endif
-            else
-                let file = fnamemodify(file, ':p:t')
-            endif
-            if file == ''
-                let file = '[No Name]'
-            endif
-            let s .= ' ' . file . ' '
-            let i = i + 1
-        endwhile
-        let s .= '%T%#TabLineFill#%='
-        let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
-        return s
-    endfunction
-    set stal=2
-    set tabline=%!MyTabLine()
-    set showtabline=1
-    highlight link TabNum Special
+			let s .= '%#TabNum#'
+			let s .= i
+			" let s .= '%*'
+			let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+			let bufnr = buflist[winnr - 1]
+			let file = bufname(bufnr)
+			let buftype = getbufvar(bufnr, 'buftype')
+			if buftype == 'nofile'
+				if file =~ '\/.'
+					let file = substitute(file, '.*\/\ze.', '', '')
+				endif
+			else
+				let file = fnamemodify(file, ':p:t')
+			endif
+			if file == ''
+				let file = '[No Name]'
+			endif
+			let s .= ' ' . file . ' '
+			let i = i + 1
+		endwhile
+		let s .= '%T%#TabLineFill#%='
+		let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+		return s
+	endfunction
+	set stal=2
+	set tabline=%!MyTabLine()
+	set showtabline=1
+	highlight link TabNum Special
 endif
 
 " Vim quickfix list launch files in new tab
@@ -81,7 +81,7 @@ set switchbuf+=usetab,newtab
 autocmd BufWritePre * %s/\s\+$//e
 
 augroup filetypedetect
-	 " Mail
+	" Mail
 	autocmd BufRead,BufNewFile *mutt-* setfiletype mail
 augroup END
 
@@ -102,24 +102,24 @@ autocmd FileType mail setlocal tw=72
 " https://stackoverflow.com/questions/2490227/how-does-vims-autoread-work
 set autoread
 augroup checktime
-    au!
-    if !has("gui_running")
-        "silent! necessary otherwise throws errors when using command
-        "line window.
-        autocmd BufEnter        * silent! checktime
-        autocmd CursorHold      * silent! checktime
-        autocmd CursorHoldI     * silent! checktime
-        "these two _may_ slow things down. Remove if they do.
-        autocmd CursorMoved     * silent! checktime
-        autocmd CursorMovedI    * silent! checktime
-    endif
+	au!
+	if !has("gui_running")
+		"silent! necessary otherwise throws errors when using command
+		"line window.
+		autocmd BufEnter        * silent! checktime
+		autocmd CursorHold      * silent! checktime
+		autocmd CursorHoldI     * silent! checktime
+		"these two _may_ slow things down. Remove if they do.
+		autocmd CursorMoved     * silent! checktime
+		autocmd CursorMovedI    * silent! checktime
+	endif
 augroup END
 
 " Enable vim-easygit
 let g:easygit_enable_command = 1
 let g:wordy#ring = [
-\  ['weasel'], ['passive-voice'], ['being', 'problematic'], ['redundant', 'weak'],
-\  ]
+			\  ['weasel'], ['passive-voice'], ['being', 'problematic'], ['redundant', 'weak'],
+			\  ]
 
 " put all splits below, mainly for terminal
 set splitbelow
@@ -190,3 +190,7 @@ fun! SetupCommandAlias(from, to)
 endfun
 call SetupCommandAlias("W","w")
 call SetupCommandAlias("Q","q")
+
+" https://github.com/airblade/vim-rootera
+let g:rooter_silent_chdir = 1
+let g:rooter_patterns = ['.git', '=reports']
