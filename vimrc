@@ -80,24 +80,6 @@ set switchbuf+=usetab,newtab
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd BufWritePre * %s/\s\+$//e
 
-augroup filetypedetect
-	" Mail
-	autocmd BufRead,BufNewFile *mutt-* setfiletype mail
-augroup END
-
-" Set mutt specific configurations
-" Add Reviewed-by tag and delete rest of the email
-function! RBtag()
-	r~/.vim/mutt/rb-tag.txt
-endfunction
-function! ABtag()
-	r~/.vim/mutt/ab-tag.txt
-endfunction
-autocmd FileType mail nmap <F2> :call RBtag()<CR>2j<CR>dG<CR>
-autocmd FileType mail nmap <F3> :call ABtag()<CR>2j<CR>dG<CR>
-" To limit the width of text to 72 character for mutt
-autocmd FileType mail setlocal tw=72
-
 " Autoread works in gVIM only, but little help is needed for VIM.
 " https://stackoverflow.com/questions/2490227/how-does-vims-autoread-work
 set autoread
@@ -130,8 +112,6 @@ imap <C-F> <c-o>:py3f ~/.vim/clang-format.py<cr>
 
 " bind F1 to grep word under cursor
 map <silent> <F1> :Gblame<CR>
-"FZF over files
-nnoremap <silent> <F2> :Files<CR>
 
 map <F3> :GrepperGit<space>
 map <silent> <F4> :GrepperGit <cword><CR>
