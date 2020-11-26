@@ -71,7 +71,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-export EDITOR='vim'
+export EDITOR='vimx'
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -96,7 +96,13 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias wmosh="mosh 10.237.188.1"
-alias vim="vim -p"
+
+if [ -z ${VIM_SERVERNAME+x} ]; then
+	alias vim="vimx -p"
+else
+	# We are running inside VIM terminal
+	alias vim="vimx -p --servername $VIM_SERVERNAME --remote-tab"
+fi
 alias gpg=gpg2
 
 mirror() {
