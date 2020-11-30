@@ -4,3 +4,6 @@ execute pathogen#infect()
 
 filetype plugin indent on    " required
 filetype plugin on
+
+" Enable vim-easygit
+let g:easygit_enable_command = 1
