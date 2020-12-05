@@ -23,7 +23,6 @@
 	numstat = log -M --oneline --numstat --no-merges
 	count = rev-list --count --no-merges
 	cumulutive = diff -M --dirstat=2,cumulative
-	rcp = "!f() { git cherry-pick $1 && x by rob $2;};f"
 	stat = shortlog --no-merges -e -s -n
 	# Find merge commit which include specific commit
 	find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
@@ -32,3 +31,5 @@
 	# Find root of source directory
 	root = rev-parse --show-toplevel
 	gp = "!f() { git cherry-pick $1 && git cl && git checkpatch ;};f"
+	rob = "!f() { git --no-pager log -1 --pretty='Reviewed-by: %aN <%ae>' --author=$1;};f"
+
