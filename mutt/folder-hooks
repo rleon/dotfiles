@@ -4,4 +4,3 @@ folder-hook .			exec collapse-all
 folder-hook .			source ~/.mutt/ml.accounts
 folder-hook private/INBOX	source ~/.mutt/private.accounts
 folder-hook work		source ~/.mutt/work.accounts
-folder-hook nvmail		source ~/.mutt/nvmail.accounts

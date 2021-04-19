@@ -4,3 +4,4 @@ set record    	= "+private/sent"
 
 set from      	= "leon@kernel.org"
 set maildir_trash = yes
+set sort_aux = last-date-received

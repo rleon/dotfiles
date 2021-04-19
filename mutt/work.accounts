@@ -5,3 +5,4 @@ set record    	= "+work/sent"
 set from      	= "leonro@nvidia.com"
 set pgp_autosign = no
 set maildir_trash = yes
+set sort_aux = reverse-last-date-received

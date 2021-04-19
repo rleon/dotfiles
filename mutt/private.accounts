@@ -5,3 +5,4 @@ set record    	= "+private/sent"
 set from      	= "leon@leon.nu"
 set pgp_autosign = no
 set maildir_trash = yes
+set sort_aux = reverse-last-date-received
