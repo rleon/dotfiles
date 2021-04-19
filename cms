@@ -1,5 +1,6 @@
 work_m = MailDir("~/mail/work/INBOX")
 nv_a = Office365_Account(user="leonro@nvidia.com")
+nv_c = Office365("inbox", nv_a)
 
 private_a = GMail_Account(user="leon@leon.nu")
 private_l = { 	"ml-group-linux-il",
@@ -8,8 +9,10 @@ private_l = { 	"ml-group-linux-il",
 		"INBOX",
 		"ml-kernel-mentors",
 		"ml-devel-linux-c",
+		"ml-kernel-mm",
 		"ml-kernel-org",
 		"ml-group-haifux",
+		"ml-kernel-netdev",
 		"ml-kernel-rdma"
 }
 
