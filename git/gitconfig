@@ -21,6 +21,7 @@
 	path = .gitaliases
 [format]
 	signoff = true
+	thread = true
 [linux-rdma]
 	url= https://patchwork.kernel.org/xmlrpc/
 [netdev]
@@ -34,6 +35,8 @@
 	envelopeSender = Leon Romanovsky <leon@kernel.org>
 	signingkey = leon@kernel.org
 	composeencoding = utf-8
+	# Rely on git-format-patch to generated message-id
+	thread = false
 [merge]
 	ff = false
 	log = true

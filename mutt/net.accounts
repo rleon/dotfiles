@@ -1,6 +1,0 @@
-set spoolfile   = "=private/netdev-mlnx"
-set postponed   = "=private/drafts"
-set record    	= "=private/sent"
-
-set from      	= "leon@kernel.org"
-set maildir_trash = yes

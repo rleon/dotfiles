@@ -1,7 +1,0 @@
-set spoolfile   = "+nvmail/INBOX"
-set postponed   = "+nvmail/drafts"
-set record    	= "+nvmail/sent"
-
-set from      	= "leonro@nvidia.com"
-set pgp_autosign = no
-set maildir_trash = yes
