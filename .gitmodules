@@ -1,0 +1,3 @@
+[submodule "vim/bundle/vim-rl"]
+	path = vim/bundle/vim-rl
+	url = git@github.com:rleon/vim-rl.git
