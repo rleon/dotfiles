@@ -5,3 +5,5 @@ set record    	= "+private/sent"
 set from      	= "leon@kernel.org"
 set maildir_trash = yes
 set sort_aux = last-date-received
+
+macro index,pager <F5> "<pipe-message>~/src/b4/b4.sh mbox -f -o ~/mail/$spoolfile/<return>
