@@ -1,4 +1,4 @@
-set spoolfile   = "+private/ml-kernel-rdma"
+set spoolfile   = "+private/ml"
 set postponed   = "+private/drafts"
 set record    	= "+private/sent"
 
