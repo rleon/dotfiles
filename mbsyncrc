@@ -9,11 +9,12 @@ Path ~/mail/private/
 Inbox ~/mail/private/INBOX
 
 IMAPAccount private
-Host imap.gmail.com
+Host imap.fastmail.com
 User leon@leon.nu
-PassCmd "grep 'machine imap.gmail.com' -A2 $HOME/.netrc | grep password | awk '{print $2}'"
-#UseIMAPS yes
+PassCmd "grep 'machine imap.fastmail.com' -A2 $HOME/.netrc | grep password | awk '{print $2}'"
 SSLType IMAPS
+SSLVersions TLSv1.2
+Port 993
 
 IMAPStore private-remote
 Account private
@@ -26,22 +27,6 @@ Channel private-ml
 Far ":private-remote:ml"
 Near ":private-local:ml"
 
-Channel private-linux-il
-Far ":private-remote:ml-group-linux-il"
-Near ":private-local:ml-group-linux-il"
-
-Channel private-haifux
-Far ":private-remote:ml-group-haifux"
-Near ":private-local:ml-group-haifux"
-
-Channel private-mentors
-Far ":private-remote:ml-kernel-mentors"
-Near ":private-local:ml-kernel-mentors"
-
-Channel private-newbies
-Far ":private-remote:ml-kernel-newbies"
-Near ":private-local:ml-kernel-newbies"
-
 Channel private-korg
 Far ":private-remote:ml-kernel-org"
 Near ":private-local:ml-kernel-org"
@@ -53,10 +38,6 @@ Near ":private-local:ml-kernel-summit"
 Group private
 Channel private-inbox
 Channel private-ml
-Channel private-linux-il
-Channel private-haifux
-Channel private-mentors
-Channel private-newbies
 Channel private-korg
 Channel private-ksummit
 
