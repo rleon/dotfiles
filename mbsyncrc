@@ -68,8 +68,10 @@ Inbox ~/mail/work/INBOX
 IMAPAccount work
 Host outlook.office365.com
 User leonro@nvidia.com
-PassCmd "grep 'machine mail.nvidia.com' -A2 $HOME/.netrc | grep password | awk '{print $2}'"
+PassCmd "/home/leonro/src/cloud_mdir_sync/cms-oauth --user=leonro@nvidia.com --cms_sock=/var/run/user/1000/cms.sock --proto=IMAP --output=token"
 SSLType IMAPS
+AuthMechs XOAUTH2
+
 
 IMAPStore work-remote
 Account work

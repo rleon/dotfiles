@@ -1,34 +1,3 @@
-work_m = MailDir("~/mail/work/INBOX")
-nv_a = Office365_Account(user="leonro@nvidia.com")
-nv_c = Office365("inbox", nv_a)
-
-private_a = GMail_Account(user="leon@leon.nu")
-private_l = { 	"ml-group-linux-il",
-		"ml-kernel-newbies",
-		"ml-kernel-summit",
-		"INBOX",
-		"ml-kernel-mentors",
-		"ml-devel-linux-c",
-		"ml-kernel-mm",
-		"ml-kernel-org",
-		"ml-group-haifux",
-		"ml-kernel-netdev",
-		"ml-kernel-rdma"
-}
-
+account = Office365_Account(user="leonro@nvidia.com")
 CredentialServer("/var/run/user/1000/cms.sock",
-                 accounts=[private_a, nv_a])
-
-
-private_m = dict();
-for label in sorted(private_l):
-	local = MailDir(f"~/mail/private/{label}")
-	cloud = GMail(label, private_a)
-	private_m[cloud] = local
-
-def direct_message(msg):
-	if msg.mailbox in private_m:
-        	return private_m[msg.mailbox]
-	return work_m
-
-cfg.direct_message = direct_message
+		accounts=[account], protocols=["SMTP", "IMAP"])
