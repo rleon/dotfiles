@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/mkt/:$HOME/src/git-tools/:$PATH
+export PATH=$HOME/mkt/:$HOME/src/git-tools/:$HOME/bin/:$HOME/.local/bin:$PATH
+export XDG_CONFIG_HOME=$HOME/.config/
 
 # https://bbs.archlinux.org/viewtopic.php?pid=1490821#p1490821
 #export GPG_TTY=$(tty)
@@ -60,7 +61,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+# plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,7 +96,7 @@ export EDITOR='vimx'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias wmosh="mosh 10.237.188.1"
+alias vpn="openconnect-sso --server ngvpn-saml.vpn.nvidia.com/SAML --user leonro@nvidia.com --authgroup Employee"
 
 if [ -z ${VIM_SERVERNAME+x} ]; then
 	alias vim="vimx -p"
@@ -105,6 +106,8 @@ else
 fi
 alias gpg=gpg2
 
+alias cms="$HOME/src/cloud_mdir_sync/cloud-mdir-sync -c ~/dotfiles/cms"
+
 mirror() {
 	local FROM="$HOME/src"
 	local TO="/swgwork/leonro/src"
@@ -113,11 +116,17 @@ mirror() {
 	for D in $FROM/*; do
 		if [ -d "${D}" ]; then
 			local DIR=$(basename ${D})
+
+			if [ "$#" -eq 2 ] && [ "$DIR" != "$2" ]; then
+				continue
+			fi
+
 			echo "$DIR:"
 			if [ -d "${D}/.git" ]; then
 				ssh $1 "mkdir -p $TO/$DIR/"
 				ssh $1 "[ ! -d $TO/$DIR/.git/ ] && git init $TO/$DIR"
 				rsync ${D}/.git/config $1:$TO/$DIR/.git/config
+				pushd -q ${D}
 				pushd -q ${D}
 				git push --mirror "leonro@$1:$TO/$DIR"
 				popd -q
