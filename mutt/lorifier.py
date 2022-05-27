@@ -23,10 +23,10 @@ import email.policy
 import os
 import sys
 import time
-import urllib.request
 
 from email.utils import mktime_tz, parsedate_tz, formatdate
-from collections import OrderedDict
+
+LORE_MASK = 'https://lore.kernel.org/all/%s'
 
 
 class muttemail:
@@ -53,53 +53,6 @@ class muttemail:
             if header_name == header.lower():
                 del (self.message._headers[i])
 
-    @staticmethod
-    def _get_lorifier_list(
-        url="https://lore.kernel.org/lists.txt",
-        cache_file="~/.cache/lorifier.list",
-        cache_ttl=86400,
-    ):
-        """
-        Retrieve Lore's list of supported mailing lists. Fail gracefully.
-
-        Cache the list at cache_file. File update is attempted at most daily.
-        """
-
-        lore_lists = OrderedDict()
-        list_file = os.path.expanduser(cache_file)
-        update = False
-
-        if not os.path.isdir(os.path.expanduser(os.path.dirname(cache_file))):
-            os.mkdir(os.path.expanduser(os.path.dirname(cache_file)))
-
-        try:
-            st = os.stat(list_file)
-            if (time.time() - st.st_mtime) > cache_ttl:
-                update = True
-        except FileNotFoundError:
-            update = True
-
-        if update:
-            try:
-                urllib.request.urlretrieve(url, list_file)
-            except Exception as e:
-                # In such an event, 'touch' the file so that an update won't
-                # be attempted again until cache_ttl has passed
-                os.utime(list_file, (time.time(), time.time()))
-                sys.stderr.write("Error fetching {}: {}\n".format(url, str(e)))
-
-        if os.path.exists(list_file):
-            with open(list_file) as f:
-                for line in f.readlines():
-                    (key, value) = line.strip().split(": ")
-                    lore_lists[key] = value
-
-        # Prefer lkml links
-        if "linux-kernel.vger.kernel.org" in lore_lists:
-            lore_lists.move_to_end("linux-kernel.vger.kernel.org", last=False)
-
-        return lore_lists
-
     def create_xuri_header(self):
         """
         If the mail is sent to a lore-supported mailing list, provide a header
@@ -109,26 +62,17 @@ class muttemail:
         remove_header("Message-ID") to avoid displaying Message-ID.
         """
 
-        lore_lists = self._get_lorifier_list()
-
         message_id = self.message.get("Message-ID", None)
         if not message_id:
             return
 
-        recipients = self.message.get("To", "") + " " + self.message.get("Cc", "")
-        recipients = recipients.replace("@", ".")
-        for email_list, lore_url in lore_lists.items():
-            if email_list in recipients:
-                self.message.add_header("X-URI", str(lore_url + message_id[1:-1]))
-                return
+        lore_url = LORE_MASK % str(message_id).strip("<>")
+        self.message.add_header("X-URI", lore_url)
 
 
 if __name__ == "__main__":
-    try:
-        e = muttemail(sys.stdin.read())
-        # e.create_xdate_header()
-        e.create_xuri_header()
-        e.remove_header("Message-ID")
-        sys.stdout.write(e.as_string())
-    except UnicodeDecodeError:
-        pass
+    e = muttemail(sys.stdin.read())
+    e.create_xdate_header()
+    e.create_xuri_header()
+    e.remove_header("Message-ID")
+    sys.stdout.write(e.as_string())

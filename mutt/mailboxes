@@ -6,18 +6,10 @@ set postponed   = "+work/drafts"
 
 set sidebar_width=40
 set sidebar_visible = yes
-set imap_check_subscribed=yes
 color sidebar_new yellow default
 
 mailboxes "work/INBOX"
 mailboxes "private/ml"
 mailboxes "private/INBOX"
-# mailboxes "private/ml-kernel-pci"
-#mailboxes "private/ml-kernel-netdev"
-#mailboxes "private/ml-kernel-mm"
 mailboxes "private/ml-kernel-org"
-mailboxes "private/ml-kernel-newbies"
-mailboxes "private/ml-group-haifux"
-mailboxes "private/ml-group-linux-il"
-mailboxes "private/ml-kernel-mentors"
 mailboxes "private/ml-kernel-summit"
