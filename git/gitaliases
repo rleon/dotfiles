@@ -1,6 +1,6 @@
 [alias]
 	st = status
-	br = branch -v
+	br = branch -v --sort=-committerdate
 	rb = rebase -i
 	rf = "!f() { git rebase -i $1~1;};f"
 	co = checkout
@@ -20,6 +20,7 @@
 	update = "!git reword --no-edit"
 	upfix = "!git up && git update && git checkpatch"
 	rgrep = "!f() { git grep $1 drivers/infiniband/ include/rdma/ include/uapi/rdma/;};f"
+	lgrep = "!f() { git grep $1 drivers/infiniband/ include/rdma/ include/uapi/rdma/ drivers/net/ethernet/mellanox/ include/linux/mlx4/ include/linux/mlx5/;};f"
 	numstat = log -M --oneline --numstat --no-merges
 	count = rev-list --count --no-merges
 	cumulutive = diff -M --dirstat=2,cumulative
