@@ -2,7 +2,10 @@
 
 [ $# -ge 1 -a -f "$1" ] && input="$1" || input="-"
 
-LINE=$(cat $input | urlscan -n -d | grep -e redmine -e gerrit -e job | grep -v setting)
+MAIL="/tmp/mail-from-mutt"
+cat $input > $MAIL
+
+LINE=$(cat $MAIL | urlscan -n -d | grep -e redmine -e gerrit -e job | grep -v setting)
 # If email contains job, we will look on it first, because we are interested
 # to see results of that job and not the change itself
 URL=$(echo "$LINE" | grep job)
@@ -22,6 +25,13 @@ fi
 URL=$(echo "$LINE" | grep gerrit -m 1)
 if [[ r"$URL" != r"" ]]; then
 	echo $URL
+	exit
+fi
+
+# Let's guess that this is ML and have lore link
+MESSAGE_ID=$(cat $MAIL | grep Message-ID -m 1 | awk '{print $2}' | tr -d '<>')
+if [[ r"$MESSAGE_ID" != r"" ]]; then
+	echo https://lore.kernel.org/all/$MESSAGE_ID
 	exit
 fi
 
