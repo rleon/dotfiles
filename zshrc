@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/mkt/:$HOME/src/git-tools/:$HOME/bin/:$HOME/.local/bin:$PATH
+export PATH=$HOME/mkt/:$HOME/src/git-tools/:$HOME/src/yo:$HOME/bin/:$HOME/.local/bin:$PATH
 export XDG_CONFIG_HOME=$HOME/.config/
 
 # https://bbs.archlinux.org/viewtopic.php?pid=1490821#p1490821
@@ -96,7 +96,7 @@ export EDITOR='vimx'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias vpn="openconnect-sso --server ngvpn-saml.vpn.nvidia.com/SAML --user leonro@nvidia.com --authgroup Employee"
+alias vpn="export OPENSSL_CONF=/home/leonro/openssl.conf && openconnect-sso --server ngvpn14.vpn.nvidia.com/SAML --user leonro@nvidia.com --authgroup Employee"
 
 if [ -z ${VIM_SERVERNAME+x} ]; then
 	alias vim="vimx -p"
@@ -113,31 +113,35 @@ mirror() {
 	local TO="/swgwork/leonro/src"
 	local RSYNC_BIN="/swgwork/leonro/bin/rsync"
 	local BASE_DIR=$(pwd)
+
 	for D in $FROM/*; do
-		if [ -d "${D}" ]; then
-			local DIR=$(basename ${D})
+		if [ ! -d "${D}" ]; then
+			continue
+		fi
+		
+		local DIR=$(basename ${D})
 
-			if [ "$#" -eq 2 ] && [ "$DIR" != "$2" ]; then
-				continue
-			fi
+		if [ "$#" -eq 2 ] && [ "$DIR" != "$2" ]; then
+			continue
+		fi
 
-			echo "$DIR:"
-			if [ -d "${D}/.git" ]; then
-				ssh $1 "mkdir -p $TO/$DIR/"
-				ssh $1 "[ ! -d $TO/$DIR/.git/ ] && git init $TO/$DIR"
-				rsync ${D}/.git/config $1:$TO/$DIR/.git/config
-				pushd -q ${D}
-				pushd -q ${D}
-				git push --mirror "leonro@$1:$TO/$DIR"
-				popd -q
-				ssh $1 "nohup cd $TO/$DIR/ && git reset --hard HEAD && git clean -f -d < /dev/null >/dev/null 2>&1 &"
-			else
-				rsync -amz --no-o --no-g --no-p \
+		echo "$DIR:"
+		if [ -d "${D}/.git" ]; then
+			ssh $1 "mkdir -p $TO/$DIR/"
+			ssh $1 "[ ! -d $TO/$DIR/.git/ ] && git init $TO/$DIR"
+			rsync ${D}/.git/config $1:$TO/$DIR/.git/config
+			pushd -q ${D}
+			#pushd -q ${D}
+			git push --mirror "leonro@$1:$TO/$DIR"
+			popd -q 2>/dev/null
+			ssh $1 "nohup git -C $TO/$DIR/ reset --hard HEAD < /dev/null >/dev/null 2>&1"
+			ssh $1 "nohup git -C $TO/$DIR/ clean -f -d < /dev/null >/dev/null 2>&1 &"
+		else
+			rsync -amz --no-o --no-g --no-p \
 				--info=progress2 --inplace --force \
 				--delete --delete-excluded ${D} $1:$TO \
 				--rsync-path=$RSYNC_BIN --chown=leonro:mtl;
-			fi
-		    fi
+		fi
 	done
 	cd $BASE_DIR
 }
