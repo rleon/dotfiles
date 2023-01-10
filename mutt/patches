@@ -1,0 +1,6 @@
+#!/bin/bash
+
+[ $# -ge 1 -a -f "$1" ] && input="$1" || input="-"
+
+cd $HOME/src/kernel
+cat $input | $HOME/src/b4/b4.sh shazam -s -l -t

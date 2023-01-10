@@ -1,6 +1,6 @@
 #set header_cache = ~/.cache/mutt
 
-set display_filter="/home/leonro/.mutt/lorifier.py"
+set display_filter="$HOME/.mutt/lorifier.py"
 
 ignore *                               # first, ignore all headers
 unignore from: to: cc: date: subject: x-uri message-id # then, show only these

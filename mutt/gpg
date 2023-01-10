@@ -90,7 +90,7 @@ set pgp_decryption_okay="^\\[GNUPG:\\] DECRYPTION_OKAY"
 # Personal options
 set pgp_autosign = yes
 set pgp_replyencrypt = yes
-set pgp_replysign = yes
+set pgp_replysign = no
 set pgp_replysignencrypted = yes
 set pgp_verify_sig = yes
 set pgp_sign_as = 367258a7

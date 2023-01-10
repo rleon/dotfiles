@@ -15,6 +15,7 @@ PassCmd "grep 'machine imap.fastmail.com' -A2 $HOME/.netrc | grep password | awk
 SSLType IMAPS
 SSLVersions TLSv1.2
 Port 993
+AuthMechs PLAIN
 
 IMAPStore private-remote
 Account private

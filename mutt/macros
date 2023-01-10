@@ -29,9 +29,16 @@ bind index <Esc><Tab> next-unread-mailbox
 bind pager <Esc><Tab> next-unread-mailbox
 bind pager i exit
 
-macro pager,index <F2> "<pipe-message> git mutt<Enter>" "apply patch"
+#set wait_key=yes
+macro pager,index <F2> \
+"\
+<enter-command>set wait_key=yes<enter> \
+<pipe-message> $HOME/.mutt/patches<Enter>" "apply patch"
 
 # Don't show the "Press any key to continue..." message
-set wait_key=no
-macro index,pager <F1> "<pipe-message> $HOME/.mutt/links | \
-	xargs firefox -url<Enter>" "open web page"
+#set wait_key=no
+macro index,pager <F1> \
+"\
+<enter-command>unset wait_key<enter> \
+<pipe-message> $HOME/.mutt/links | \
+xargs firefox -url<Enter>" "open web page"
