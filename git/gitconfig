@@ -22,10 +22,6 @@
 [format]
 	signoff = true
 	thread = true
-[linux-rdma]
-	url= https://patchwork.kernel.org/xmlrpc/
-[netdev]
-	url= https://patchwork.ozlabs.org/xmlrpc/
 [sendemail]
 	smtpserver = /usr/local/bin/msmtp-enqueue.sh
 	suppresscc = self
@@ -35,7 +31,7 @@
 	envelopeSender = Leon Romanovsky <leon@kernel.org>
 	signingkey = leon@kernel.org
 	composeencoding = utf-8
-	# Rely on git-format-patch to generated message-id
+	# Rely on git-format-patch to generate message-id
 	thread = false
 [merge]
 	ff = false
@@ -50,5 +46,14 @@
 [http]
 	postBuffer = 524288000
 [url "https://git.kernel.org"]
-    insteadOf = http://git.kernel.org
-    insteadOf = git://git.kernel.org
+	insteadOf = http://git.kernel.org
+	insteadOf = git://git.kernel.org
+[b4]
+	trailer-order = "Cc,Fixes*,Link*,Suggested*,Reviewed*,Tested*,*"
+	pw-url = https://patchwork.kernel.org/
+	pw-project = linux-rdma
+       pw-key = SECRET_KEY
+	thanks-commit-url-mask = https://git.kernel.org/rdma/rdma/c/%.14s
+	pw-review-state = under-review
+	pw-accept-state = accepted
+	pw-discard-state = new
