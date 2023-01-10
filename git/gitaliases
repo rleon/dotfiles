@@ -15,6 +15,8 @@
 	send-upstream = send-email --suppress-cc=bodycc --suppress-from --no-signed-off-cc
 	dirt = config gerrit.createChangeId true
 	undirt = config gerrit.createChangeId false
+	set-name = config user.email leonro@nvidia.com
+	unset-name = config user.email leon@kernel.org
 	undo = reset --hard
 	reword = commit --amend --allow-empty
 	update = "!git reword --no-edit"
@@ -33,4 +35,5 @@
 	root = rev-parse --show-toplevel
 	gp = "!f() { git cherry-pick $1 && git cl && git checkpatch ;};f"
 	rob = "!f() { git --no-pager log -1 --pretty='Reviewed-by: %aN <%ae>' --author=$1;};f"
+	ty = "!f() { $HOME/src/b4/b4.sh ty ${@:1};};f"
 
