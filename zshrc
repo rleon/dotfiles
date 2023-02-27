@@ -131,11 +131,16 @@ mirror() {
 			ssh $1 "[ ! -d $TO/$DIR/.git/ ] && git init $TO/$DIR"
 			rsync ${D}/.git/config $1:$TO/$DIR/.git/config
 			pushd -q ${D}
-			#pushd -q ${D}
-			git push --mirror "leonro@$1:$TO/$DIR"
+
+			local LOG=$(git push --mirror "leonro@$1:$TO/$DIR" 2>&1)
 			popd -q 2>/dev/null
-			ssh $1 "nohup git -C $TO/$DIR/ reset --hard HEAD < /dev/null >/dev/null 2>&1"
-			ssh $1 "nohup git -C $TO/$DIR/ clean -f -d < /dev/null >/dev/null 2>&1 &"
+			echo $LOG
+			if [ $(grep -c "Everything up-to-date" <<< $LOG) -eq 1 ]; then
+				continue
+			else
+				ssh $1 "nohup git -C $TO/$DIR/ reset --hard HEAD < /dev/null >/dev/null 2>&1"
+				ssh $1 "nohup git -C $TO/$DIR/ clean -f -d < /dev/null >/dev/null 2>&1 &"
+			fi
 		else
 			rsync -amz --no-o --no-g --no-p \
 				--info=progress2 --inplace --force \
