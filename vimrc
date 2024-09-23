@@ -7,3 +7,7 @@ filetype plugin on
 
 " Enable vim-easygit
 let g:easygit_enable_command = 1
+
+let g:copilot_filetypes = {
+	\ 'gitcommit': v:true,
+	\ }
