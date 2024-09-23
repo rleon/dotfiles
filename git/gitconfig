@@ -1,8 +1,10 @@
 [user]
 	author = Leon Romanovsky
 	name = Leon Romanovsky
-	email = leonro@nvidia.com
+	email = leon@kernel.org
 	signingKey = 921AFFAF83A9D7FD38CAA681E4637B88367258A7
+[advice]
+	skippedCherryPicks = false
 [gpg]
 	program = gpg2
 [tag]
@@ -36,6 +38,8 @@
 [merge]
 	ff = false
 	log = true
+[log]
+	mailmap = false
 [rerere]
 	enabled = true
 	autoupdate = true
@@ -57,3 +61,4 @@
 	pw-review-state = under-review
 	pw-accept-state = accepted
 	pw-discard-state = new
+	linkmask = https://patch.msgid.link/%s
