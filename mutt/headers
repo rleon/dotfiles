@@ -1,5 +1,8 @@
 #set header_cache = ~/.cache/mutt
 
+# mutt-2.1+ only
+set message_id_format = "<%Y%02m%02d%02H%02M%02S.G%c%p@%f>"
+
 set display_filter="$HOME/.mutt/lorifier.py"
 
 ignore *                               # first, ignore all headers

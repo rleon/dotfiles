@@ -27,6 +27,7 @@ import time
 from email.utils import mktime_tz, parsedate_tz, formatdate
 
 LORE_MASK = 'https://lore.kernel.org/all/%s'
+PW_MASK = 'https://patchwork.kernel.org/project/netdevbpf/patch/%s'
 
 
 class muttemail:
@@ -69,10 +70,26 @@ class muttemail:
         lore_url = LORE_MASK % str(message_id).strip("<>")
         self.message.add_header("X-URI", lore_url)
 
+    def create_xpw_header(self):
+        """
+        If the mail is sent to a patchworks based mailing list, provide a header
+        with a patchwork link directly.
+
+        Message-ID header must be present. Be sure it is unignored. Use
+        remove_header("Message-ID") to avoid displaying Message-ID.
+        """
+
+        message_id = self.message.get("Message-ID", None)
+        if not message_id:
+            return
+
+        pw_url = PW_MASK % str(message_id).strip("<>")
+        self.message.add_header("X-PW", pw_url)
 
 if __name__ == "__main__":
     e = muttemail(sys.stdin.read())
     e.create_xdate_header()
     e.create_xuri_header()
+    #e.create_xpw_header()
     e.remove_header("Message-ID")
     sys.stdout.write(e.as_string())

@@ -2,7 +2,7 @@ set sort     = threads
 set sort_aux = reverse-last-date-received
 set sort_re
 
-set collapse_unread = yes
+set collapse_unread = no
 
 set pager_index_lines = 8
 set pager_context     = 5
