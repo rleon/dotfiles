@@ -12,9 +12,18 @@
 	rfixup = "!f() { git fixup $1 && git rf $1;};f"
 	up = add --update
 	l = log --oneline
-	send-upstream = send-email --suppress-cc=bodycc --suppress-from --no-signed-off-cc
-	dirt = config gerrit.createChangeId true
-	undirt = config gerrit.createChangeId false
+	send-upstream = send-email --suppress-cc=bodycc --suppress-from --no-signed-off-by-cc
+	send-report = "!f() { _REP=$(mktemp) && \
+		echo \"From b8722f14e7ed81452f791764a26d2ed4cfa11478 Mon Sep 17 00:00:00 2001 \" > $_REP && \
+		echo "" >> $_REP && cat $1 >> $_REP && \
+		git send-email --envelope-sender=\"Leon Romanovsky <leonro@nvidia.com>\" \
+			--from=\"Leon Romanovsky <leonro@nvidia.com>\" \
+			--to=\"Jason Gunthorpe <jgg@nvidia.com>\" \
+			--subject=\"weekly ${1%.*}\" \
+			--force $_REP && \
+		rm $_REP;};f"
+	dirt = "!git config gerrit.createChangeId true && git set-name"
+	undirt = "!git config gerrit.createChangeId false && git unset-name"
 	set-name = config user.email leonro@nvidia.com
 	unset-name = config user.email leon@kernel.org
 	undo = reset --hard
@@ -33,7 +42,7 @@
 	show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
 	# Find root of source directory
 	root = rev-parse --show-toplevel
-	gp = "!f() { git cherry-pick $1 && git cl && git checkpatch ;};f"
 	rob = "!f() { git --no-pager log -1 --pretty='Reviewed-by: %aN <%ae>' --author=$1;};f"
 	ty = "!f() { $HOME/src/b4/b4.sh ty ${@:1};};f"
+	shazam = "!f() { $HOME/src/b4/b4.sh shazam -l -s ${@:1} && git ty -d all;};f"
 
