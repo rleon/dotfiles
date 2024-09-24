@@ -36,11 +36,16 @@ Channel private-ksummit
 Far ":private-remote:ml-kernel-summit"
 Near ":private-local:ml-kernel-summit"
 
+Channel private-sent
+Far ":private-remote:Sent"
+Near ":private-local:sent"
+
 Group private
 Channel private-inbox
 Channel private-ml
 Channel private-korg
 Channel private-ksummit
+Channel private-sent
 
 # leonro@nvidia.com
 MaildirStore work-local
@@ -54,7 +59,6 @@ PassCmd "/home/leonro/src/cloud_mdir_sync/cms-oauth --user=leonro@nvidia.com --c
 SSLType IMAPS
 AuthMechs XOAUTH2
 
-
 IMAPStore work-remote
 Account work
 
@@ -62,5 +66,10 @@ Channel work-inbox
 Far ":work-remote:INBOX"
 Near ":work-local:INBOX"
 
+Channel work-sent
+Far ":work-remote:'Sent Items'"
+Near ":work-local:sent"
+
 Group work
 Channel work-inbox
+Channel work-sent
