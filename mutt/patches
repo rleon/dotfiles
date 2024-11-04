@@ -2,5 +2,5 @@
 
 [ $# -ge 1 -a -f "$1" ] && input="$1" || input="-"
 
-cd $HOME/src/kernel
-cat $input | $HOME/src/b4/b4.sh shazam -s -l -t
+SRC="/home/leonro/src"
+cat $input | ssh lr.nvidia.com "cd $SRC/kernel && $SRC/b4/b4.sh shazam -s -l -t"
