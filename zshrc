@@ -72,7 +72,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-export EDITOR='vimx'
+export EDITOR='vim'
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -99,10 +99,10 @@ export EDITOR='vimx'
 alias vpn="export OPENSSL_CONF=/home/leonro/openssl.conf && openconnect-sso --server ngvpn14.vpn.nvidia.com/SAML --user leonro@nvidia.com --authgroup Employee"
 
 if [ -z ${VIM_SERVERNAME+x} ]; then
-	alias vim="vimx -p"
+	alias vim="vim -p"
 else
 	# We are running inside VIM terminal
-	alias vim="vimx -p --servername $VIM_SERVERNAME --remote-tab"
+	alias vim="vim -p --servername $VIM_SERVERNAME --remote-tab"
 fi
 alias gpg=gpg2
 
