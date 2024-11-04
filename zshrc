@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/mkt/:$HOME/src/git-tools/:$HOME/src/yo:$HOME/bin/:$HOME/.local/bin:$PATH
+export PATH=$HOME/src/mkt/:$HOME/src/git-tools/:$HOME/src/yo:$HOME/.local/bin:$PATH
 export XDG_CONFIG_HOME=$HOME/.config/
 
 # https://bbs.archlinux.org/viewtopic.php?pid=1490821#p1490821
